@@ -1,0 +1,1390 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>Creative Resume Preview | ResumeForge</title>
+
+
+    <!-- Font Awesome -->
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+
+    <!-- EXISTING CREATIVE CSS -->
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/creative_preview.css') }}">
+
+</head>
+
+
+<body>
+
+
+<!-- ======================================================
+     RESUMEFORGE HEADER
+====================================================== -->
+
+<header class="preview-navbar">
+
+
+    <!-- LEFT -->
+
+    <div class="nav-left">
+
+
+        <a
+            href="{{ url_for('builder') }}"
+            class="back-btn">
+
+            <i class="fa-solid fa-arrow-left"></i>
+
+            Back
+
+        </a>
+
+
+        <h2 class="logo">
+
+            Resume<span>Forge</span>
+
+        </h2>
+
+
+    </div>
+
+
+
+    <!-- RIGHT -->
+
+    <div class="nav-right">
+
+
+        <!-- PRINT -->
+
+        <button
+            type="button"
+            class="nav-btn"
+            onclick="printResume()">
+
+            <i class="fa-solid fa-print"></i>
+
+            Print
+
+        </button>
+
+
+
+        <!-- DOWNLOAD -->
+
+        <button
+            type="button"
+            class="download-btn"
+            id="downloadPdf">
+
+            <i class="fa-solid fa-download"></i>
+
+            Download PDF
+
+        </button>
+
+
+    </div>
+
+
+</header>
+
+
+
+<!-- ======================================================
+     PAGE
+====================================================== -->
+
+<div class="preview-page">
+
+
+    <!-- ==================================================
+         ACTUAL RESUME
+         KEEP CLASS NAME
+    =================================================== -->
+
+    <div
+        class="resume-paper"
+        id="resumePaper">
+
+
+        <div class="resume-row">
+
+
+            <!-- ==================================================
+                 LEFT SIDEBAR
+            =================================================== -->
+
+            <aside class="left-column">
+
+
+                <!-- INITIAL -->
+
+                <div class="initial-wrapper">
+
+                    <div class="initial-circle">
+
+                        {% if personal.fullName %}
+
+                            {{ personal.fullName[0]|upper }}
+
+                            {% if personal.fullName.split()|length > 1 %}
+
+                                {{ personal.fullName.split()[-1][0]|upper }}
+
+                            {% endif %}
+
+                        {% else %}
+
+                            R
+
+                        {% endif %}
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- ==================================================
+                     CONTACT
+                =================================================== -->
+
+                <div class="sidebar-section">
+
+
+                    <h3>
+
+                        CONTACT
+
+                    </h3>
+
+
+                    <div class="section-divider"></div>
+
+
+
+                    {% if personal.email %}
+
+                    <p>
+
+                        <i class="fa-solid fa-envelope"></i>
+
+                        {{ personal.email }}
+
+                    </p>
+
+                    {% endif %}
+
+
+
+                    {% if personal.phone %}
+
+                    <p>
+
+                        <i class="fa-solid fa-phone"></i>
+
+                        {{ personal.phone }}
+
+                    </p>
+
+                    {% endif %}
+
+
+
+                    {% if personal.location %}
+
+                    <p>
+
+                        <i class="fa-solid fa-location-dot"></i>
+
+                        {{ personal.location }}
+
+                    </p>
+
+                    {% endif %}
+
+
+
+                    {% if personal.linkedin %}
+
+                    <p>
+
+                        <i class="fa-brands fa-linkedin"></i>
+
+                        <a
+                            href="{{ personal.linkedin }}"
+                            target="_blank"
+                            rel="noopener noreferrer">
+
+                            LinkedIn
+
+                        </a>
+
+                    </p>
+
+                    {% endif %}
+
+
+
+                    {% if personal.github %}
+
+                    <p>
+
+                        <i class="fa-brands fa-github"></i>
+
+                        <a
+                            href="{{ personal.github }}"
+                            target="_blank"
+                            rel="noopener noreferrer">
+
+                            GitHub
+
+                        </a>
+
+                    </p>
+
+                    {% endif %}
+
+
+
+                    {% if personal.portfolio %}
+
+                    <p>
+
+                        <i class="fa-solid fa-globe"></i>
+
+                        <a
+                            href="{{ personal.portfolio }}"
+                            target="_blank"
+                            rel="noopener noreferrer">
+
+                            Portfolio
+
+                        </a>
+
+                    </p>
+
+                    {% endif %}
+
+
+                </div>
+
+
+
+                <!-- ==================================================
+                     SKILLS
+                =================================================== -->
+
+                <div class="sidebar-section">
+
+
+                    <h3>
+
+                        SKILLS
+
+                    </h3>
+
+
+                    <div class="section-divider"></div>
+
+
+                    <div class="skill-box">
+
+
+                        {% if skills.language %}
+
+                            {% for skill in skills.language %}
+
+                                {% if skill %}
+
+                                    <span>{{ skill }}</span>
+
+                                {% endif %}
+
+                            {% endfor %}
+
+                        {% endif %}
+
+
+
+                        {% if skills.framework %}
+
+                            {% for skill in skills.framework %}
+
+                                {% if skill %}
+
+                                    <span>{{ skill }}</span>
+
+                                {% endif %}
+
+                            {% endfor %}
+
+                        {% endif %}
+
+
+
+                        {% if skills.database %}
+
+                            {% for skill in skills.database %}
+
+                                {% if skill %}
+
+                                    <span>{{ skill }}</span>
+
+                                {% endif %}
+
+                            {% endfor %}
+
+                        {% endif %}
+
+
+
+                        {% if skills.tool %}
+
+                            {% for skill in skills.tool %}
+
+                                {% if skill %}
+
+                                    <span>{{ skill }}</span>
+
+                                {% endif %}
+
+                            {% endfor %}
+
+                        {% endif %}
+
+
+
+                        {% if skills.soft %}
+
+                            {% for skill in skills.soft %}
+
+                                {% if skill %}
+
+                                    <span>{{ skill }}</span>
+
+                                {% endif %}
+
+                            {% endfor %}
+
+                        {% endif %}
+
+
+
+                        {% if skills.other %}
+
+                            {% for skill in skills.other %}
+
+                                {% if skill %}
+
+                                    <span>{{ skill }}</span>
+
+                                {% endif %}
+
+                            {% endfor %}
+
+                        {% endif %}
+
+
+                    </div>
+
+
+                </div>
+
+
+
+                <!-- ==================================================
+                     LANGUAGES
+                =================================================== -->
+
+                {% if languages %}
+
+                <div class="sidebar-section">
+
+
+                    <h3>
+
+                        LANGUAGES
+
+                    </h3>
+
+
+                    <div class="section-divider"></div>
+
+
+
+                    {% for language in languages %}
+
+                    <p>
+
+
+                        <strong>
+
+                            {{ language.language }}
+
+                        </strong>
+
+
+                        <br>
+
+
+                        {{ language.proficiency }}
+
+
+                    </p>
+
+                    {% endfor %}
+
+
+                </div>
+
+                {% endif %}
+
+
+
+                <!-- ==================================================
+                     CERTIFICATES
+                =================================================== -->
+
+                {% if certificates %}
+
+                <div class="sidebar-section">
+
+
+                    <h3>
+
+                        CERTIFICATES
+
+                    </h3>
+
+
+                    <div class="section-divider"></div>
+
+
+
+                    {% for certificate in certificates %}
+
+
+                    <div class="certificate-item">
+
+
+                        <strong>
+
+                            {{ certificate.certificateTitle }}
+
+                        </strong>
+
+
+                        <small>
+
+                            {{ certificate.certificateOrganization }}
+
+                        </small>
+
+
+
+                        {% if certificate.certificateDate %}
+
+                        <small>
+
+                            {{ certificate.certificateDate }}
+
+                        </small>
+
+                        {% endif %}
+
+
+                    </div>
+
+
+                    {% endfor %}
+
+
+                </div>
+
+                {% endif %}
+
+
+            </aside>
+
+
+
+            <!-- ==================================================
+                 RIGHT CONTENT
+            =================================================== -->
+
+            <main class="right-column">
+
+
+                <!-- ==================================================
+                     HEADER
+                =================================================== -->
+
+                <header class="resume-header">
+
+
+                    <h1>
+
+                        {{ personal.fullName }}
+
+                    </h1>
+
+
+
+                    {% if personal.jobTitle %}
+
+                    <h2>
+
+                        {{ personal.jobTitle }}
+
+                    </h2>
+
+                    {% endif %}
+
+
+                </header>
+
+
+
+                <!-- ==================================================
+                     PROFESSIONAL SUMMARY
+                =================================================== -->
+
+                {% if personal.summary %}
+
+                <section class="content-section">
+
+
+                    <h3>
+
+                        Professional Summary
+
+                    </h3>
+
+
+                    <div class="content-divider"></div>
+
+
+                    <p>
+
+                        {{ personal.summary }}
+
+                    </p>
+
+
+                </section>
+
+                {% endif %}
+
+
+
+                <!-- ==================================================
+                     EXPERIENCE
+                =================================================== -->
+
+                {% if experience %}
+
+                <section class="content-section">
+
+
+                    <h3>
+
+                        Experience
+
+                    </h3>
+
+
+                    <div class="content-divider"></div>
+
+
+
+                    {% for exp in experience %}
+
+
+                    <div class="experience-card">
+
+
+                        <div class="experience-header">
+
+
+                            <div>
+
+
+                                <h4>
+
+                                    {{ exp.role }}
+
+                                </h4>
+
+
+                                <h5>
+
+                                    {{ exp.company }}
+
+                                </h5>
+
+
+                            </div>
+
+
+
+                            <div class="experience-date">
+
+
+                                {{ exp.experienceStart }}
+
+
+                                {% if exp.experienceEnd %}
+
+                                    - {{ exp.experienceEnd }}
+
+                                {% endif %}
+
+
+                            </div>
+
+
+                        </div>
+
+
+
+                        {% if exp.experienceLocation %}
+
+                        <p class="location">
+
+                            {{ exp.experienceLocation }}
+
+                        </p>
+
+                        {% endif %}
+
+
+
+                        {% if exp.employmentType %}
+
+                        <p>
+
+                            {{ exp.employmentType }}
+
+                        </p>
+
+                        {% endif %}
+
+
+
+                        {% if exp.experienceDescription %}
+
+                        <p>
+
+                            {{ exp.experienceDescription }}
+
+                        </p>
+
+                        {% endif %}
+
+
+                    </div>
+
+
+                    {% endfor %}
+
+
+                </section>
+
+                {% endif %}
+
+
+
+                <!-- ==================================================
+                     EDUCATION
+                =================================================== -->
+
+                {% if education %}
+
+                <section class="content-section">
+
+
+                    <h3>
+
+                        Education
+
+                    </h3>
+
+
+                    <div class="content-divider"></div>
+
+
+
+                    {% for edu in education %}
+
+
+                    <div class="education-card">
+
+
+                        <h4>
+
+                            {{ edu.degree }}
+
+                        </h4>
+
+
+                        {% if edu.institute %}
+
+                        <h5>
+
+                            {{ edu.institute }}
+
+                        </h5>
+
+                        {% endif %}
+
+
+
+                        {% if edu.university %}
+
+                        <p>
+
+                            {{ edu.university }}
+
+                        </p>
+
+                        {% endif %}
+
+
+
+                        <div class="education-bottom">
+
+
+                            <span>
+
+                                {{ edu.startYear }}
+
+
+                                {% if edu.endYear %}
+
+                                    - {{ edu.endYear }}
+
+                                {% endif %}
+
+                            </span>
+
+
+
+                            {% if edu.cgpa %}
+
+                            <span>
+
+                                {{ edu.cgpa }}
+
+                            </span>
+
+                            {% endif %}
+
+
+                        </div>
+
+
+                    </div>
+
+
+                    {% endfor %}
+
+
+                </section>
+
+                {% endif %}
+
+
+
+                <!-- ==================================================
+                     PROJECTS
+                =================================================== -->
+
+                {% if projects %}
+
+                <section class="content-section">
+
+
+                    <h3>
+
+                        Projects
+
+                    </h3>
+
+
+                    <div class="content-divider"></div>
+
+
+
+                    {% for project in projects %}
+
+
+                    <div class="project-card">
+
+
+                        <h4>
+
+                            {{ project.projectTitle }}
+
+                        </h4>
+
+
+
+                        {% if project.projectRole %}
+
+                        <h5>
+
+                            {{ project.projectRole }}
+
+                        </h5>
+
+                        {% endif %}
+
+
+
+                        {% if project.duration %}
+
+                        <p>
+
+                            {{ project.duration }}
+
+                        </p>
+
+                        {% endif %}
+
+
+
+                        {% if project.technologies %}
+
+                        <p>
+
+                            <strong>
+
+                                Technologies :
+
+                            </strong>
+
+                            {{ project.technologies }}
+
+                        </p>
+
+                        {% endif %}
+
+
+
+                        {% if project.projectType %}
+
+                        <p>
+
+                            <strong>
+
+                                Project Type :
+
+                            </strong>
+
+                            {{ project.projectType }}
+
+                        </p>
+
+                        {% endif %}
+
+
+
+                        {% if project.teamSize %}
+
+                        <p>
+
+                            <strong>
+
+                                Team Size :
+
+                            </strong>
+
+                            {{ project.teamSize }}
+
+                        </p>
+
+                        {% endif %}
+
+
+
+                        {% if project.projectDescription %}
+
+                        <p>
+
+                            {{ project.projectDescription }}
+
+                        </p>
+
+                        {% endif %}
+
+
+
+                        <div class="project-links">
+
+
+                            {% if project.projectGithub %}
+
+                            <a
+                                href="{{ project.projectGithub }}"
+                                target="_blank"
+                                rel="noopener noreferrer">
+
+                                GitHub
+
+                            </a>
+
+                            {% endif %}
+
+
+
+                            {% if project.projectLive %}
+
+                            <a
+                                href="{{ project.projectLive }}"
+                                target="_blank"
+                                rel="noopener noreferrer">
+
+                                Live Demo
+
+                            </a>
+
+                            {% endif %}
+
+
+                        </div>
+
+
+                    </div>
+
+
+                    {% endfor %}
+
+
+                </section>
+
+                {% endif %}
+
+
+
+                <!-- ==================================================
+                     ADDITIONAL INFORMATION
+                =================================================== -->
+
+                {% if additional.achievements
+                    or additional.publications
+                    or additional.volunteer
+                    or additional.activities
+                    or additional.interests
+                    or additional.hobbies %}
+
+
+                <section class="content-section">
+
+
+                    <h3>
+
+                        Additional Information
+
+                    </h3>
+
+
+                    <div class="content-divider"></div>
+
+
+
+                    {% if additional.achievements %}
+
+                    <div class="additional-card">
+
+                        <h4>
+
+                            Achievements
+
+                        </h4>
+
+                        <p>
+
+                            {{ additional.achievements }}
+
+                        </p>
+
+                    </div>
+
+                    {% endif %}
+
+
+
+                    {% if additional.publications %}
+
+                    <div class="additional-card">
+
+                        <h4>
+
+                            Publications
+
+                        </h4>
+
+                        <p>
+
+                            {{ additional.publications }}
+
+                        </p>
+
+                    </div>
+
+                    {% endif %}
+
+
+
+                    {% if additional.volunteer %}
+
+                    <div class="additional-card">
+
+                        <h4>
+
+                            Volunteer Experience
+
+                        </h4>
+
+                        <p>
+
+                            {{ additional.volunteer }}
+
+                        </p>
+
+                    </div>
+
+                    {% endif %}
+
+
+
+                    {% if additional.activities %}
+
+                    <div class="additional-card">
+
+                        <h4>
+
+                            Extra Activities
+
+                        </h4>
+
+                        <p>
+
+                            {{ additional.activities }}
+
+                        </p>
+
+                    </div>
+
+                    {% endif %}
+
+
+
+                    {% if additional.interests %}
+
+                    <div class="additional-card">
+
+                        <h4>
+
+                            Interests
+
+                        </h4>
+
+                        <p>
+
+                            {{ additional.interests }}
+
+                        </p>
+
+                    </div>
+
+                    {% endif %}
+
+
+
+                    {% if additional.hobbies %}
+
+                    <div class="additional-card">
+
+                        <h4>
+
+                            Hobbies
+
+                        </h4>
+
+                        <p>
+
+                            {{ additional.hobbies }}
+
+                        </p>
+
+                    </div>
+
+                    {% endif %}
+
+
+                </section>
+
+                {% endif %}
+
+
+            </main>
+
+
+        </div>
+
+
+    </div>
+
+
+</div>
+
+
+
+<!-- ======================================================
+     PDF DOWNLOAD
+====================================================== -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+
+<script>
+
+
+/* ======================================================
+   PRINT ONLY THE RESUME
+====================================================== */
+
+function printResume(){
+
+    const resume =
+        document.getElementById("resumePaper");
+
+    if(!resume){
+
+        return;
+
+    }
+
+
+    const printWindow =
+        window.open("", "_blank");
+
+
+    printWindow.document.write(`
+
+        <!DOCTYPE html>
+
+        <html>
+
+        <head>
+
+            <title>Resume</title>
+
+
+            <link
+                rel="stylesheet"
+                href="{{ url_for('static', filename='css/creative_preview.css') }}">
+
+
+            <style>
+
+                @page{
+
+                    size:A4;
+
+                    margin:0;
+
+                }
+
+
+                html,
+                body{
+
+                    margin:0;
+
+                    padding:0;
+
+                    background:#fff;
+
+                }
+
+
+                .preview-navbar{
+
+                    display:none !important;
+
+                }
+
+
+                .preview-page{
+
+                    margin:0 !important;
+
+                    padding:0 !important;
+
+                }
+
+
+                .resume-paper{
+
+                    margin:0 auto !important;
+
+                    box-shadow:none !important;
+
+                }
+
+
+            </style>
+
+
+        </head>
+
+
+        <body>
+
+            ${resume.outerHTML}
+
+        </body>
+
+
+        </html>
+
+    `);
+
+
+    printWindow.document.close();
+
+
+    printWindow.onload = function(){
+
+        printWindow.focus();
+
+        printWindow.print();
+
+        printWindow.close();
+
+    };
+
+}
+
+
+
+/* ======================================================
+   DOWNLOAD EXACT DISPLAYED RESUME
+====================================================== */
+
+document
+    .getElementById("downloadPdf")
+    .addEventListener("click", function(){
+
+
+        const resume =
+            document.getElementById("resumePaper");
+
+
+        if(!resume){
+
+            alert("Resume could not be found.");
+
+            return;
+
+        }
+
+
+        const options = {
+
+
+            margin: 0,
+
+
+            filename: "Resume.pdf",
+
+
+            image: {
+
+                type: "jpeg",
+
+                quality: 1
+
+            },
+
+
+            html2canvas: {
+
+                scale: 2,
+
+                useCORS: true,
+
+                backgroundColor: "#ffffff",
+
+
+                scrollX: 0,
+
+                scrollY: 0
+
+            },
+
+
+            jsPDF: {
+
+                unit: "mm",
+
+                format: "a4",
+
+                orientation: "portrait"
+
+            },
+
+
+            pagebreak: {
+
+                mode: [
+
+                    "css",
+
+                    "legacy"
+
+                ]
+
+            }
+
+
+        };
+
+
+        html2pdf()
+
+            .set(options)
+
+            .from(resume)
+
+            .save();
+
+
+    });
+
+
+</script>
+
+
+</body>
+
+</html>

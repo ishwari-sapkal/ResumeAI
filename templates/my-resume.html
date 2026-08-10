@@ -1,0 +1,1032 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>My Resume | ResumeAI</title>
+
+
+    <!-- =================================================
+         FONT AWESOME
+    ================================================== -->
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+
+    <!-- =================================================
+         EXISTING DASHBOARD CSS
+    ================================================== -->
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/dashboard.css') }}">
+
+
+    <!-- =================================================
+         EXISTING MY RESUME CSS
+    ================================================== -->
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/my-resume.css') }}">
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     MAIN DASHBOARD LAYOUT
+
+     IMPORTANT:
+     This wrapper keeps sidebar + main content
+     SIDE BY SIDE.
+
+     Existing class names are NOT changed.
+====================================================== -->
+
+<div style="
+    display:flex;
+    width:100%;
+    min-height:100vh;
+    align-items:stretch;
+">
+
+
+    <!-- =================================================
+         SIDEBAR
+    ================================================== -->
+
+    <!-- ================= SIDEBAR ================= -->
+
+<aside class="sidebar">
+
+    <div class="logo">
+
+        Resume<span>AI</span>
+
+    </div>
+
+    <nav>
+
+        <!-- Dashboard -->
+
+        <button
+            type="button"
+            onclick="window.location.href='/dashboard'">
+
+            <i class="fas fa-table-columns"></i>
+
+            Dashboard
+
+        </button>
+
+
+        <!-- My Resume -->
+
+        <button
+            type="button"
+            class="active">
+
+            <i class="fas fa-file-lines"></i>
+
+            My Resume
+
+        </button>
+
+
+        <!-- Templates -->
+
+        <button
+            type="button"
+            onclick="window.location.href='/templates'">
+
+            <i class="fas fa-layer-group"></i>
+
+            Templates
+
+        </button>
+
+
+        <!-- Profile -->
+
+        <button
+            type="button"
+            onclick="window.location.href='/profile'">
+
+            <i class="fas fa-user"></i>
+
+            Profile
+
+        </button>
+
+
+        <!-- Logout -->
+
+        <button
+            type="button"
+            class="logout"
+            id="logoutButton">
+
+            <i class="fas fa-right-from-bracket"></i>
+
+            Logout
+
+        </button>
+
+    </nav>
+
+</aside>
+
+
+    <!-- =================================================
+         MAIN CONTENT
+    ================================================== -->
+
+    <main class="dashboard-main"
+          style="
+              flex:1;
+              min-width:0;
+          ">
+
+
+        <!-- =================================================
+             PAGE HEADER
+        ================================================== -->
+
+        <section class="page-header">
+
+
+            <div>
+
+                <h1>
+                    My Resume
+                </h1>
+
+
+                <p>
+                    Manage, edit, preview and download all your
+                    professional resumes.
+                </p>
+
+            </div>
+
+
+            <button
+                class="create-btn"
+                id="createResume"
+                type="button">
+
+                <i class="fas fa-plus"></i>
+
+                Create Resume
+
+            </button>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             SUMMARY
+        ================================================== -->
+
+        <section class="resume-summary">
+
+
+            <!-- TOTAL RESUMES -->
+
+            <div class="summary-card">
+
+                <i class="fas fa-file-lines"></i>
+
+                <div>
+
+                    <h3>
+                        {{ total_resumes }}
+                    </h3>
+
+                    <p>
+                        Total Resumes
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- MOST USED TEMPLATE -->
+
+            <div class="summary-card">
+
+                <i class="fas fa-layer-group"></i>
+
+                <div>
+
+                    <h3 class="template-value">
+                        {{ most_used_template }}
+                    </h3>
+
+                    <p>
+                        Most Used Template
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- DOWNLOADS -->
+
+            <div class="summary-card">
+
+                <i class="fas fa-download"></i>
+
+                <div>
+
+                    <h3>
+                        {{ total_downloads }}
+                    </h3>
+
+                    <p>
+                        Downloads
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- LAST UPDATED -->
+
+            <div class="summary-card">
+
+                  <i class="fas fa-clock"></i>
+
+                <div>
+
+                   <h3 class="last-updated-value">
+                        {{ last_updated }}
+                    </h3>
+
+                    <p>
+                        Last Updated
+                    </p>
+
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             SEARCH
+        ================================================== -->
+
+        <section class="search-section">
+
+            <div class="search-box">
+
+                <i class="fas fa-search"></i>
+
+                <input
+                    type="text"
+                    id="searchResume"
+                    placeholder="Search your resumes..."
+                    autocomplete="off">
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             RESUME LIST
+        ================================================== -->
+
+        <section class="resume-list"
+                 id="resumeList">
+
+
+            {% if resumes %}
+
+
+                {% for resume in resumes %}
+
+
+                <!-- =================================================
+                     RESUME CARD
+                ================================================== -->
+
+                <div class="resume-card"
+
+                     data-title="{{ resume.title|default('')|lower }}"
+
+                     data-template="{{ resume.template|default('')|lower }}"
+
+                     data-id="{{ resume._id }}">
+
+
+                    <!-- =================================================
+                         RESUME ICON
+                    ================================================== -->
+
+                    <div class="resume-icon">
+
+                        <i class="fas fa-file-lines"></i>
+
+                    </div>
+
+
+
+                    <!-- =================================================
+                         RESUME DETAILS
+                    ================================================== -->
+
+                    <div class="resume-details">
+
+
+                        <!-- HEADER -->
+
+                        <div class="resume-top">
+
+
+                            <h2>
+
+                                {{ resume.title|default('Untitled Resume') }}
+
+                            </h2>
+
+
+                            <span
+                                class="template-badge {{ resume.template|default('professional')|lower }}">
+
+                                {{ resume.template|default('Professional')|title }}
+
+                            </span>
+
+
+                        </div>
+
+
+
+                        <!-- DESCRIPTION -->
+
+                        <p class="resume-description">
+
+
+                            {% if resume.personal and resume.personal.summary %}
+
+                                {{ resume.personal.summary }}
+
+                            {% else %}
+
+                                Professional resume created with ResumeAI.
+
+                            {% endif %}
+
+
+                        </p>
+
+
+
+                        <!-- META INFORMATION -->
+
+                        <div class="resume-meta">
+
+
+                            <!-- UPDATED -->
+
+                            <span>
+
+                                <i class="fas fa-rotate"></i>
+
+                                Updated
+
+                                {% if resume.updatedAt %}
+
+                                    {{ resume.updatedAt.strftime('%d %b %Y') }}
+
+                                {% else %}
+
+                                    Recently
+
+                                {% endif %}
+
+                            </span>
+
+
+
+                            <!-- CREATED -->
+
+                            <span>
+
+                                <i class="fas fa-calendar"></i>
+
+                                Created
+
+                                {% if resume.createdAt %}
+
+                                    {{ resume.createdAt.strftime('%d %b %Y') }}
+
+                                {% else %}
+
+                                    Recently
+
+                                {% endif %}
+
+                            </span>
+
+
+                        </div>
+
+
+
+                        <!-- =================================================
+                             ACTION BUTTONS
+                        ================================================== -->
+
+                        <div class="resume-actions">
+
+
+                            <!-- =================================================
+                                 PREVIEW
+                            ================================================== -->
+
+                            <button
+                                type="button"
+                                class="preview-btn"
+                                data-id="{{ resume._id }}">
+
+                                <i class="fas fa-eye"></i>
+
+                                Preview
+
+                            </button>
+
+
+
+                            <!-- =================================================
+                                 EDIT
+                            ================================================== -->
+
+                            <button
+                                type="button"
+                                class="edit-btn"
+                                data-id="{{ resume._id }}">
+
+                                <i class="fas fa-pen"></i>
+
+                                Edit
+
+                            </button>
+
+
+
+                            <!-- =================================================
+                                 DOWNLOAD
+                            ================================================== -->
+
+                            <button
+                                type="button"
+                                class="download-btn"
+                                data-id="{{ resume._id }}">
+
+                                <i class="fas fa-download"></i>
+
+                                Download
+
+                            </button>
+
+
+
+                            <!-- =================================================
+                                 DELETE
+                            ================================================== -->
+
+                            <button
+                                type="button"
+                                class="delete-btn"
+                                data-id="{{ resume._id }}">
+
+                                <i class="fas fa-trash"></i>
+
+                                Delete
+
+                            </button>
+
+
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+
+
+                {% endfor %}
+
+
+            {% else %}
+
+
+                <!-- =================================================
+                     EMPTY STATE
+                ================================================== -->
+
+                <div class="empty-state"
+                     id="emptyState">
+
+
+                    <i class="fas fa-file-circle-plus"></i>
+
+
+                    <h2>
+                        No Resumes Yet
+                    </h2>
+
+
+                    <p>
+                        You haven't created a resume yet.
+                        Start creating your professional resume now.
+                    </p>
+
+
+                    <button
+                        class="create-btn"
+                        type="button"
+                        id="emptyCreateResume">
+
+                        <i class="fas fa-plus"></i>
+
+                        Create Your First Resume
+
+                    </button>
+
+
+                </div>
+
+
+            {% endif %}
+
+
+        </section>
+
+
+    </main>
+
+
+</div>
+
+
+
+<!-- =====================================================
+     JAVASCRIPT
+====================================================== -->
+
+<script>
+
+
+/* =====================================================
+   CREATE RESUME
+===================================================== */
+
+const createResumeButton =
+    document.getElementById("createResume");
+
+
+if(createResumeButton){
+
+    createResumeButton.addEventListener("click", function(){
+
+        window.location.href = "/select-template";
+
+    });
+
+}
+
+
+
+/* =====================================================
+   EMPTY STATE CREATE RESUME
+===================================================== */
+
+const emptyCreateResume =
+    document.getElementById("emptyCreateResume");
+
+
+if(emptyCreateResume){
+
+    emptyCreateResume.addEventListener("click", function(){
+
+        window.location.href = "/select-template";
+
+    });
+
+}
+
+
+
+/* =====================================================
+   LOGOUT
+===================================================== */
+
+const logoutButton =
+    document.getElementById("logoutButton");
+
+
+if(logoutButton){
+
+    logoutButton.addEventListener("click", function(){
+
+        const confirmLogout =
+            confirm("Are you sure you want to logout?");
+
+
+        if(confirmLogout){
+
+            window.location.href = "/logout";
+
+        }
+
+    });
+
+}
+
+
+
+/* =====================================================
+   SEARCH RESUMES
+===================================================== */
+
+const searchResume =
+    document.getElementById("searchResume");
+
+
+const resumeCards =
+    document.querySelectorAll(".resume-card");
+
+
+if(searchResume){
+
+    searchResume.addEventListener("input", function(){
+
+        const searchValue =
+            this.value.toLowerCase().trim();
+
+
+        resumeCards.forEach(function(card){
+
+            const title =
+                card.dataset.title || "";
+
+
+            const template =
+                card.dataset.template || "";
+
+
+            if(
+                title.includes(searchValue) ||
+                template.includes(searchValue)
+            ){
+
+                card.style.display = "";
+
+            }
+            else{
+
+                card.style.display = "none";
+
+            }
+
+        });
+
+    });
+
+}
+
+
+
+/* =====================================================
+   PREVIEW RESUME
+===================================================== */
+
+const previewButtons =
+    document.querySelectorAll(".preview-btn");
+
+
+previewButtons.forEach(function(button){
+
+    button.addEventListener("click", function(){
+
+        const resumeId =
+            this.dataset.id;
+
+
+        if(!resumeId){
+
+            return;
+
+        }
+
+
+        window.location.href =
+            "/preview-resume/" + resumeId;
+
+    });
+
+});
+
+
+
+/* =====================================================
+   EDIT RESUME
+===================================================== */
+
+const editButtons =
+    document.querySelectorAll(".edit-btn");
+
+
+editButtons.forEach(function(button){
+
+    button.addEventListener("click", function(){
+
+        const resumeId =
+            this.dataset.id;
+
+
+        if(!resumeId){
+
+            return;
+
+        }
+
+
+        /*
+         * Existing resume ID is sent to Flask.
+         *
+         * Flask will verify ownership and load
+         * the complete resume document.
+         */
+
+        window.location.href =
+            "/edit-resume/" + resumeId;
+
+    });
+
+});
+
+
+
+/* =====================================================
+   DOWNLOAD RESUME
+===================================================== */
+
+const downloadButtons =
+    document.querySelectorAll(".download-btn");
+
+
+downloadButtons.forEach(function(button){
+
+    button.addEventListener("click", function(){
+
+        const resumeId =
+            this.dataset.id;
+
+
+        if(!resumeId){
+
+            return;
+
+        }
+
+
+        window.location.href =
+            "/download-resume/" + resumeId;
+
+    });
+
+});
+
+
+
+/* =====================================================
+   DELETE RESUME
+===================================================== */
+
+const deleteButtons =
+    document.querySelectorAll(".delete-btn");
+
+
+deleteButtons.forEach(function(button){
+
+    button.addEventListener("click", function(){
+
+        const resumeId =
+            this.dataset.id;
+
+
+        if(!resumeId){
+
+            return;
+
+        }
+
+
+        const card =
+            this.closest(".resume-card");
+
+
+        const resumeTitle =
+            card
+                ? card.querySelector(".resume-top h2").textContent.trim()
+                : "this resume";
+
+
+        const confirmed =
+            confirm(
+                `Are you sure you want to delete "${resumeTitle}"?`
+            );
+
+
+        if(!confirmed){
+
+            return;
+
+        }
+
+
+        /*
+         * Create POST request for Flask.
+         */
+
+        fetch("/delete-resume/" + resumeId, {
+
+            method:"POST",
+
+            headers:{
+                "Content-Type":"application/json"
+            }
+
+        })
+
+        .then(function(response){
+
+            if(!response.ok){
+
+                throw new Error(
+                    "Unable to delete resume."
+                );
+
+            }
+
+            return response.json();
+
+        })
+
+        .then(function(data){
+
+            if(data.success){
+
+                /*
+                 * Remove card immediately
+                 * without refreshing the page.
+                 */
+
+                if(card){
+
+                    card.remove();
+
+                }
+
+
+                /*
+                 * Update total resume count.
+                 */
+
+                const totalResumeCard =
+                    document.querySelector(
+                        ".summary-card h3"
+                    );
+
+
+                if(totalResumeCard){
+
+                    const current =
+                        parseInt(
+                            totalResumeCard.textContent.trim()
+                        ) || 0;
+
+
+                    totalResumeCard.textContent =
+                        Math.max(0, current - 1);
+
+                }
+
+
+                /*
+                 * If there are no cards remaining,
+                 * show empty state.
+                 */
+
+                const remainingCards =
+                    document.querySelectorAll(
+                        ".resume-card"
+                    );
+
+
+                if(remainingCards.length === 0){
+
+                    const resumeList =
+                        document.getElementById("resumeList");
+
+
+                    if(resumeList){
+
+                        resumeList.innerHTML = `
+
+                            <div class="empty-state"
+                                 id="emptyState">
+
+                                <i class="fas fa-file-circle-plus"></i>
+
+                                <h2>
+                                    No Resumes Yet
+                                </h2>
+
+                                <p>
+                                    You haven't created a resume yet.
+                                    Start creating your professional
+                                    resume now.
+                                </p>
+
+                                <button
+                                    class="create-btn"
+                                    type="button"
+                                    onclick="window.location.href='/select-template'">
+
+                                    <i class="fas fa-plus"></i>
+
+                                    Create Your First Resume
+
+                                </button>
+
+                            </div>
+
+                        `;
+
+                    }
+
+                }
+
+            }
+            else{
+
+                alert(
+                    data.message ||
+                    "Unable to delete resume."
+                );
+
+            }
+
+        })
+
+        .catch(function(error){
+
+            console.error(
+                "Delete Error:",
+                error
+            );
+
+
+            alert(
+                "Something went wrong while deleting the resume."
+            );
+
+        });
+
+    });
+
+});
+
+
+</script>
+
+
+</body>
+
+</html>

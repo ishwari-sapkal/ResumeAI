@@ -1,0 +1,998 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>ResumeAI - Authentication</title>
+
+
+    <!-- Font Awesome -->
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+
+    <!-- YOUR EXISTING CSS -->
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/auth.css') }}">
+
+
+    <!-- =================================================
+         ONLY MESSAGE STYLING
+         DOES NOT CHANGE YOUR EXISTING UI
+    ================================================== -->
+
+    <style>
+
+        .auth-message-wrapper{
+
+            position:absolute;
+
+            top:28px;
+
+            left:50%;
+
+            transform:translateX(-50%);
+
+            width:min(450px,85%);
+
+            z-index:50;
+
+            pointer-events:none;
+
+        }
+
+
+        .auth-message{
+
+            width:100%;
+
+            padding:13px 18px;
+
+            border-radius:14px;
+
+            font-size:14px;
+
+            font-weight:600;
+
+            text-align:center;
+
+            background:#ffffff;
+
+            box-shadow:
+                0 12px 30px rgba(0,0,0,.10);
+
+            animation:authMessageIn .35s ease;
+
+        }
+
+
+        .auth-message.error{
+
+            color:#b91c1c;
+
+            border:1px solid #fecaca;
+
+            background:#fff7f7;
+
+        }
+
+
+        .auth-message.success{
+
+            color:#166534;
+
+            border:1px solid #bbf7d0;
+
+            background:#f0fdf4;
+
+        }
+
+
+        @keyframes authMessageIn{
+
+            from{
+
+                opacity:0;
+
+                transform:translateY(-10px);
+
+            }
+
+            to{
+
+                opacity:1;
+
+                transform:translateY(0);
+
+            }
+
+        }
+
+
+        /*
+
+           IMPORTANT:
+
+           The message is positioned absolutely,
+
+           therefore it DOES NOT push the login/register
+
+           form down.
+
+        */
+
+
+        @media(max-width:768px){
+
+            .auth-message-wrapper{
+
+                top:15px;
+
+                width:calc(100% - 40px);
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<div class="auth-page">
+
+
+    <!-- =================================================
+         FLASH MESSAGE
+         DOES NOT CHANGE FORM POSITION
+    ================================================== -->
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+
+        {% if messages %}
+
+            <div class="auth-message-wrapper">
+
+                {% for category, message in messages %}
+
+                    <div
+                        class="auth-message
+                        {% if category == 'success' %}
+                            success
+                        {% else %}
+                            error
+                        {% endif %}">
+
+                        {{ message }}
+
+                    </div>
+
+                {% endfor %}
+
+            </div>
+
+        {% endif %}
+
+    {% endwith %}
+
+
+
+    <!-- =================================================
+         MAIN AUTH CARD
+    ================================================== -->
+
+    <div class="auth-card">
+
+
+        <!-- =================================================
+             LEFT PANEL
+        ================================================== -->
+
+        <div class="left-panel">
+
+
+            <div class="overlay-content">
+
+
+                <!-- LOGO -->
+
+                <span class="logo">
+
+                    Resume<span>AI</span>
+
+                </span>
+
+
+
+                <!-- HEADING -->
+
+                <h1>
+
+                    Land Your Dream Job Faster
+
+                </h1>
+
+
+
+                <!-- DESCRIPTION -->
+
+                <p>
+
+                    Create beautiful ATS-friendly resumes in minutes
+                    with AI-powered suggestions and professional templates.
+
+                </p>
+
+
+
+                <!-- =================================================
+                     RESUME PREVIEW
+                ================================================== -->
+
+                <div class="resume-preview">
+
+
+                    <div class="profile"></div>
+
+
+                    <div class="resume-line long"></div>
+
+
+                    <div class="resume-line medium"></div>
+
+
+                    <div class="resume-line short"></div>
+
+
+                    <div class="resume-section"></div>
+
+
+                    <div class="resume-line long"></div>
+
+
+                    <div class="resume-line medium"></div>
+
+
+                </div>
+
+
+
+                <!-- =================================================
+                     FLOATING CARDS
+                ================================================== -->
+
+                <div class="floating-card card1">
+
+                    ⭐ ATS Ready
+
+                </div>
+
+
+                <div class="floating-card card2">
+
+                    🤖 AI Powered
+
+                </div>
+
+
+                <div class="floating-card card3">
+
+                    📄 PDF Export
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- =================================================
+             RIGHT PANEL
+
+             IMPORTANT:
+             LOGIN AND REGISTER ARE BOTH INSIDE THIS SAME
+             PANEL.
+
+             ONLY ONE IS DISPLAYED AT A TIME.
+        ================================================== -->
+
+        <div class="right-panel">
+
+
+            <!-- =================================================
+                 LOGIN FORM
+            ================================================== -->
+
+            <form
+                class="form-box login show"
+                id="loginForm"
+                action="{{ url_for('login') }}"
+                method="POST">
+
+
+                <h2>
+
+                    Welcome Back
+
+                </h2>
+
+
+                <p>
+
+                    Login to continue building your resume.
+
+                </p>
+
+
+
+                <!-- EMAIL -->
+
+                <div class="input-box">
+
+
+                    <i class="fas fa-envelope"></i>
+
+
+                    <input
+                        type="email"
+                        id="loginEmail"
+                        name="email"
+                        placeholder="Email Address"
+                        autocomplete="email"
+                        required>
+
+
+                </div>
+
+
+
+                <!-- PASSWORD -->
+
+                <div class="input-box">
+
+
+                    <i class="fas fa-lock"></i>
+
+
+                    <input
+                        type="password"
+                        id="loginPassword"
+                        name="password"
+                        placeholder="Password"
+                        autocomplete="current-password"
+                        required>
+
+
+                </div>
+
+
+
+                <!-- FORGOT PASSWORD -->
+
+                <span class="forgot-password">
+
+                    Forgot Password?
+
+                </span>
+
+
+
+                <!-- LOGIN BUTTON -->
+
+                <button
+                    type="submit"
+                    class="main-btn"
+                    id="loginBtn">
+
+                    Login
+
+                    <i class="fas fa-arrow-right"></i>
+
+                </button>
+
+
+
+                <!-- DIVIDER -->
+
+                <div class="divider">
+
+                    <span>
+
+                        OR
+
+                    </span>
+
+                </div>
+
+
+
+                <!-- GOOGLE -->
+
+                <button
+                    type="button"
+                    class="google-btn">
+
+                    Continue with Google
+
+                </button>
+
+
+
+                <!-- SWITCH -->
+
+                <p class="switch-text">
+
+                    Don't have an account?
+
+                    <span
+                        id="showRegister"
+                        role="button"
+                        tabindex="0">
+
+                        Register
+
+                    </span>
+
+                </p>
+
+
+            </form>
+
+
+
+            <!-- =================================================
+                 REGISTER FORM
+
+                 IMPORTANT:
+                 SAME RIGHT PANEL.
+                 NOT BELOW LOGIN.
+            ================================================== -->
+
+            <form
+                class="form-box register hide"
+                id="registerForm"
+                action="{{ url_for('register') }}"
+                method="POST">
+
+
+                <h2>
+
+                    Create Account
+
+                </h2>
+
+
+                <p>
+
+                    Start building professional resumes today.
+
+                </p>
+
+
+
+                <!-- FULL NAME -->
+
+                <div class="input-box">
+
+
+                    <i class="fas fa-user"></i>
+
+
+                    <input
+                        type="text"
+                        id="fullName"
+                        name="name"
+                        placeholder="Full Name"
+                        autocomplete="name"
+                        required>
+
+
+                </div>
+
+
+
+                <!-- EMAIL -->
+
+                <div class="input-box">
+
+
+                    <i class="fas fa-envelope"></i>
+
+
+                    <input
+                        type="email"
+                        id="registerEmail"
+                        name="email"
+                        placeholder="Email Address"
+                        autocomplete="email"
+                        required>
+
+
+                </div>
+
+
+
+                <!-- PASSWORD -->
+
+                <div class="input-box">
+
+
+                    <i class="fas fa-lock"></i>
+
+
+                    <input
+                        type="password"
+                        id="registerPassword"
+                        name="password"
+                        placeholder="Password"
+                        autocomplete="new-password"
+                        required>
+
+
+                </div>
+
+
+
+                <!-- CONFIRM PASSWORD -->
+
+                <div class="input-box">
+
+
+                    <i class="fas fa-lock"></i>
+
+
+                    <input
+                        type="password"
+                        id="confirmPassword"
+                        name="confirmPassword"
+                        placeholder="Confirm Password"
+                        autocomplete="new-password"
+                        required>
+
+
+                </div>
+
+
+
+                <!-- REGISTER BUTTON -->
+
+                <button
+                    type="submit"
+                    class="main-btn"
+                    id="registerBtn">
+
+                    Create Account
+
+                    <i class="fas fa-arrow-right"></i>
+
+                </button>
+
+
+
+                <!-- DIVIDER -->
+
+                <div class="divider">
+
+                    <span>
+
+                        OR
+
+                    </span>
+
+                </div>
+
+
+
+                <!-- GOOGLE -->
+
+                <button
+                    type="button"
+                    class="google-btn">
+
+                    Continue with Google
+
+                </button>
+
+
+
+                <!-- SWITCH -->
+
+                <p class="switch-text">
+
+                    Already have an account?
+
+                    <span
+                        id="showLogin"
+                        role="button"
+                        tabindex="0">
+
+                        Login
+
+                    </span>
+
+                </p>
+
+
+            </form>
+
+
+        </div>
+
+
+    </div>
+
+
+</div>
+
+
+
+<!-- =========================================================
+     JAVASCRIPT
+========================================================= -->
+
+<script>
+
+
+document.addEventListener("DOMContentLoaded", function(){
+
+
+    /* =====================================================
+       ELEMENTS
+    ===================================================== */
+
+    const loginForm =
+        document.getElementById("loginForm");
+
+
+    const registerForm =
+        document.getElementById("registerForm");
+
+
+    const showRegister =
+        document.getElementById("showRegister");
+
+
+    const showLogin =
+        document.getElementById("showLogin");
+
+
+
+    /* =====================================================
+       SHOW LOGIN
+    ===================================================== */
+
+    function openLogin(){
+
+        loginForm.classList.remove("hide");
+
+        loginForm.classList.add("show");
+
+
+        registerForm.classList.remove("show");
+
+        registerForm.classList.add("hide");
+
+    }
+
+
+
+    /* =====================================================
+       SHOW REGISTER
+    ===================================================== */
+
+    function openRegister(){
+
+        registerForm.classList.remove("hide");
+
+        registerForm.classList.add("show");
+
+
+        loginForm.classList.remove("show");
+
+        loginForm.classList.add("hide");
+
+    }
+
+
+
+    /* =====================================================
+       REGISTER CLICK
+    ===================================================== */
+
+    if(showRegister){
+
+        showRegister.addEventListener(
+            "click",
+            openRegister
+        );
+
+
+        showRegister.addEventListener(
+            "keydown",
+            function(event){
+
+                if(
+                    event.key === "Enter" ||
+                    event.key === " "
+                ){
+
+                    event.preventDefault();
+
+                    openRegister();
+
+                }
+
+            }
+        );
+
+    }
+
+
+
+    /* =====================================================
+       LOGIN CLICK
+    ===================================================== */
+
+    if(showLogin){
+
+        showLogin.addEventListener(
+            "click",
+            openLogin
+        );
+
+
+        showLogin.addEventListener(
+            "keydown",
+            function(event){
+
+                if(
+                    event.key === "Enter" ||
+                    event.key === " "
+                ){
+
+                    event.preventDefault();
+
+                    openLogin();
+
+                }
+
+            }
+        );
+
+    }
+
+
+
+    /* =====================================================
+       DETERMINE WHICH FORM SHOULD BE OPEN
+
+       Registration errors:
+       - Email already registered
+       - Password mismatch
+       - Missing fields
+
+       Login errors:
+       - Invalid email/password
+       - Missing credentials
+    ===================================================== */
+
+    const messageElement =
+        document.querySelector(".auth-message");
+
+
+    if(messageElement){
+
+        const message =
+            messageElement.textContent
+            .trim()
+            .toLowerCase();
+
+
+        /* Registration related messages */
+
+        const registrationMessage =
+            message.includes("email already registered") ||
+            message.includes("passwords do not match") ||
+            message.includes("please fill all fields") ||
+            message.includes("account created successfully");
+
+
+        /* Login related messages */
+
+        const loginMessage =
+            message.includes("invalid email or password") ||
+            message.includes("please enter email and password") ||
+            message.includes("login successful");
+
+
+        if(registrationMessage && !loginMessage){
+
+            openRegister();
+
+        }
+        else{
+
+            openLogin();
+
+        }
+
+
+        /* =================================================
+           AUTO HIDE MESSAGE
+
+           The message disappears after a few seconds,
+           but the form stays exactly where it is.
+        ================================================= */
+
+        setTimeout(function(){
+
+            messageElement.style.opacity = "0";
+
+            messageElement.style.transform =
+                "translateY(-8px)";
+
+            messageElement.style.transition =
+                "opacity .3s ease, transform .3s ease";
+
+
+            setTimeout(function(){
+
+                const wrapper =
+                    messageElement.parentElement;
+
+                if(wrapper){
+
+                    wrapper.remove();
+
+                }
+
+            },300);
+
+        },4500);
+
+    }
+
+
+
+    /* =====================================================
+       REGISTER PASSWORD CHECK
+
+       Client-side check gives instant feedback.
+       Flask still performs the real validation.
+    ===================================================== */
+
+    if(registerForm){
+
+        registerForm.addEventListener(
+            "submit",
+            function(event){
+
+                const password =
+                    document.getElementById(
+                        "registerPassword"
+                    ).value;
+
+
+                const confirmPassword =
+                    document.getElementById(
+                        "confirmPassword"
+                    ).value;
+
+
+                if(password !== confirmPassword){
+
+                    event.preventDefault();
+
+
+                    showClientMessage(
+                        "Passwords do not match.",
+                        "error"
+                    );
+
+                }
+
+            }
+        );
+
+    }
+
+
+
+    /* =====================================================
+       CLIENT MESSAGE
+
+       This does NOT alter the layout.
+    ===================================================== */
+
+    function showClientMessage(
+        text,
+        type
+    ){
+
+        const oldWrapper =
+            document.querySelector(
+                ".auth-message-wrapper"
+            );
+
+
+        if(oldWrapper){
+
+            oldWrapper.remove();
+
+        }
+
+
+        const wrapper =
+            document.createElement("div");
+
+
+        wrapper.className =
+            "auth-message-wrapper";
+
+
+        const message =
+            document.createElement("div");
+
+
+        message.className =
+            "auth-message " + type;
+
+
+        message.textContent =
+            text;
+
+
+        wrapper.appendChild(message);
+
+
+        document
+            .querySelector(".right-panel")
+            .appendChild(wrapper);
+
+
+        setTimeout(function(){
+
+            message.style.opacity = "0";
+
+            message.style.transform =
+                "translateY(-8px)";
+
+            message.style.transition =
+                "opacity .3s ease, transform .3s ease";
+
+
+            setTimeout(function(){
+
+                wrapper.remove();
+
+            },300);
+
+        },4500);
+
+    }
+
+
+});
+
+
+</script>
+
+
+</body>
+
+</html>

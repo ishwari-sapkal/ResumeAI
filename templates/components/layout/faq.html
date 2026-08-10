@@ -1,0 +1,162 @@
+<section class="faq">
+
+    <div class="faq-content">
+
+        <div class="faq-container">
+
+            <!-- FAQ 1 -->
+
+            <div class="faq-item active">
+
+                <button>
+
+                    <span>
+                        Is this resume ATS friendly?
+                    </span>
+
+                    <i class="fas fa-chevron-down"></i>
+
+                </button>
+
+                <div class="faq-answer">
+
+                    <p>
+                        Yes. Every template is designed to work perfectly with
+                        Applicant Tracking Systems.
+                    </p>
+
+                </div>
+
+            </div>
+
+            <!-- FAQ 2 -->
+
+            <div class="faq-item">
+
+                <button>
+
+                    <span>
+                        Can I download my resume as PDF?
+                    </span>
+
+                    <i class="fas fa-chevron-down"></i>
+
+                </button>
+
+                <div class="faq-answer">
+
+                    <p>
+                        Absolutely. You can export your resume in
+                        high-quality PDF format.
+                    </p>
+
+                </div>
+
+            </div>
+
+            <!-- FAQ 3 -->
+
+            <div class="faq-item">
+
+                <button>
+
+                    <span>
+                        Do I need an account?
+                    </span>
+
+                    <i class="fas fa-chevron-down"></i>
+
+                </button>
+
+                <div class="faq-answer">
+
+                    <p>
+                        Yes. Creating an account allows you to save
+                        and edit resumes anytime.
+                    </p>
+
+                </div>
+
+            </div>
+
+            <!-- FAQ 4 -->
+
+            <div class="faq-item">
+
+                <button>
+
+                    <span>
+                        Can I edit my resume later?
+                    </span>
+
+                    <i class="fas fa-chevron-down"></i>
+
+                </button>
+
+                <div class="faq-answer">
+
+                    <p>
+                        Yes. Your resume is securely stored and can
+                        be updated whenever you want.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="faq-heading">
+
+        <span>
+            FAQ
+        </span>
+
+        <h2>
+
+            Frequently Asked
+
+            <br>
+
+            Questions
+
+        </h2>
+
+        <p>
+
+            Find answers to common questions about creating,
+            editing and downloading your resume.
+
+        </p>
+
+    </div>
+
+</section>
+
+<script>
+
+document.querySelectorAll(".faq-item button").forEach(button => {
+
+    button.addEventListener("click", () => {
+
+        const currentItem = button.parentElement;
+
+        document.querySelectorAll(".faq-item").forEach(item => {
+
+            if(item !== currentItem){
+
+                item.classList.remove("active");
+
+            }
+
+        });
+
+        currentItem.classList.toggle("active");
+
+    });
+
+});
+
+</script>

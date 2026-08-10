@@ -1,0 +1,1151 @@
+/* ==========================================================
+   CREATIVE RESUME V2
+   PART 1 : GLOBAL + HEADER + PAPER + SIDEBAR
+========================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+
+    font-family:'Poppins',sans-serif;
+
+    background:#eef2f7;
+
+    color:#111;
+
+    padding:110px 20px 40px;
+
+}
+
+/* ==========================================================
+   RESUMEFORGE HEADER
+========================================================== */
+
+.preview-navbar{
+
+    position:fixed;
+
+    top:20px;
+    left:50%;
+
+    transform:translateX(-50%);
+
+    width:92%;
+    max-width:1450px;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    padding:16px 28px;
+
+    background:rgba(255,255,255,.65);
+
+    backdrop-filter:blur(18px);
+
+    -webkit-backdrop-filter:blur(18px);
+
+    border:1px solid rgba(255,255,255,.5);
+
+    border-radius:18px;
+
+    box-shadow:
+    0 12px 35px rgba(0,0,0,.08);
+
+    z-index:999;
+
+}
+
+.nav-left,
+.nav-right{
+
+    display:flex;
+    align-items:center;
+    gap:16px;
+
+}
+
+.logo{
+
+    font-size:28px;
+
+    font-weight:700;
+
+    color:#111;
+
+}
+
+.logo span{
+
+    color:#7d5fff;
+
+}
+
+.back-btn,
+.nav-btn,
+.download-btn{
+
+    border:none;
+
+    outline:none;
+
+    cursor:pointer;
+
+    text-decoration:none;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+
+    font-size:15px;
+
+    font-weight:600;
+
+    padding:12px 22px;
+
+    border-radius:12px;
+
+    transition:.35s;
+
+}
+
+.back-btn{
+
+    background:#111;
+
+    color:#fff;
+
+}
+
+.nav-btn{
+
+    background:#ffffff;
+
+    color:#111;
+
+}
+
+.download-btn{
+
+    background:#7d5fff;
+
+    color:#fff;
+
+}
+
+.back-btn:hover,
+.nav-btn:hover,
+.download-btn:hover{
+
+    transform:translateY(-2px);
+
+}
+
+/* ==========================================================
+   PAGE
+========================================================== */
+
+.preview-page{
+
+    display:flex;
+
+    justify-content:center;
+
+}
+
+/* ==========================================================
+   A4 PAPER
+========================================================== */
+
+.resume-paper{
+
+    width:210mm;
+
+    min-height:297mm;
+
+    background:#ffffff;
+
+    position:relative;
+
+    overflow:hidden;
+
+    box-shadow:
+    0 20px 50px rgba(0,0,0,.12);
+
+}
+
+/* Decorative Corner */
+
+.resume-paper::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+    right:0;
+
+    width:140px;
+    height:140px;
+
+    background:#111;
+
+    clip-path:polygon(100% 0,0 0,100% 100%);
+
+    opacity:.05;
+
+}
+
+/* Half Left + Half Bottom Border */
+
+.resume-paper::after{
+
+    content:"";
+
+    position:absolute;
+
+    left:0;
+    bottom:0;
+
+    width:120px;
+    height:120px;
+
+    border-left:12px solid #111;
+
+    border-bottom:12px solid #111;
+
+}
+
+/* ==========================================================
+   MAIN LAYOUT
+========================================================== */
+
+.resume-row{
+
+    display:grid;
+
+    grid-template-columns:32% 68%;
+
+    min-height:297mm;
+
+}
+
+/* ==========================================================
+   SIDEBAR
+========================================================== */
+
+.left-column{
+
+    background:#ece4d8;
+
+    padding:42px 30px;
+
+    position:relative;
+
+}
+
+/* ==========================================================
+   INITIALS
+========================================================== */
+
+.initial-wrapper{
+
+    display:flex;
+
+    justify-content:center;
+
+    margin-bottom:45px;
+
+}
+
+.initial-circle{
+
+    width:135px;
+    height:135px;
+
+    border-radius:50%;
+
+    background:#111;
+
+    color:#ece4d8;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    font-size:50px;
+
+    font-weight:800;
+
+    letter-spacing:3px;
+
+    box-shadow:
+    0 10px 25px rgba(0,0,0,.18);
+
+}
+
+/* ==========================================================
+   SIDEBAR SECTIONS
+========================================================== */
+
+.sidebar-section{
+
+    margin-bottom:34px;
+
+}
+
+.sidebar-section h3{
+
+    font-size:16px;
+
+    letter-spacing:3px;
+
+    font-weight:700;
+
+    color:#111;
+
+    text-transform:uppercase;
+
+}
+
+.section-divider{
+
+    width:60px;
+
+    height:2px;
+
+    background:#111;
+
+    margin:10px 0 18px;
+
+}
+
+.sidebar-section p{
+
+    display:flex;
+
+    align-items:flex-start;
+
+    gap:10px;
+
+    font-size:14px;
+
+    color:#444;
+
+    margin-bottom:10px;
+
+    line-height:1.6;
+
+}
+
+.sidebar-section i{
+
+    width:18px;
+
+    color:#111;
+
+    margin-top:2px;
+
+}
+
+.sidebar-section a{
+
+    color:#111;
+
+    text-decoration:none;
+
+    font-weight:600;
+
+}
+
+.sidebar-section a:hover{
+
+    text-decoration:underline;
+
+}
+
+
+/* ==========================================================
+   PART 2 : RIGHT COLUMN
+========================================================== */
+
+.right-column{
+
+    padding:55px 50px 45px;
+
+    display:flex;
+
+    flex-direction:column;
+
+}
+
+/* ==========================================================
+   HEADER
+========================================================== */
+
+.resume-header{
+
+    margin-bottom:32px;
+
+    position:relative;
+
+}
+
+.resume-header h1{
+
+    font-size:42px;
+
+    font-weight:800;
+
+    color:#111;
+
+    letter-spacing:2px;
+
+    text-transform:uppercase;
+
+    line-height:1;
+
+    white-space:nowrap;
+
+}
+
+.resume-header h2{
+
+    margin-top:12px;
+
+    font-size:17px;
+
+    font-weight:500;
+
+    color:#666;
+
+    letter-spacing:3px;
+
+    text-transform:uppercase;
+
+}
+
+.resume-header::after{
+
+    content:"";
+
+    width:90px;
+
+    height:3px;
+
+    background:#111;
+
+    display:block;
+
+    margin-top:18px;
+
+}
+
+/* ==========================================================
+   CONTENT SECTION
+========================================================== */
+
+.content-section{
+
+    margin-bottom:34px;
+
+}
+
+.content-section h3{
+
+    font-size:17px;
+
+    font-weight:700;
+
+    letter-spacing:2px;
+
+    text-transform:uppercase;
+
+    color:#111;
+
+}
+
+.content-divider{
+
+    width:60px;
+
+    height:2px;
+
+    background:#111;
+
+    margin:8px 0 18px;
+
+}
+
+.content-section p{
+
+    font-size:14px;
+
+    color:#444;
+
+    line-height:1.8;
+
+    text-align:justify;
+
+}
+
+/* ==========================================================
+   EXPERIENCE
+========================================================== */
+
+.experience-card{
+
+    margin-bottom:22px;
+
+    padding-bottom:18px;
+
+    border-bottom:1px solid #d8d8d8;
+
+}
+
+.experience-card:last-child{
+
+    border:none;
+
+    margin-bottom:0;
+
+}
+
+.experience-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:flex-start;
+
+    gap:20px;
+
+}
+
+.experience-header h4{
+
+    font-size:18px;
+
+    font-weight:700;
+
+    color:#111;
+
+}
+
+.experience-header h5{
+
+    margin-top:4px;
+
+    font-size:15px;
+
+    font-weight:600;
+
+    color:#666;
+
+}
+
+.experience-date{
+
+    font-size:13px;
+
+    font-weight:600;
+
+    color:#777;
+
+    white-space:nowrap;
+
+}
+
+.location{
+
+    margin:8px 0 12px;
+
+    font-size:13px;
+
+    color:#777;
+
+    font-style:italic;
+
+}
+
+/* ==========================================================
+   EDUCATION
+========================================================== */
+
+.education-card{
+
+    padding:18px 20px;
+
+    margin-bottom:18px;
+
+    border-left:4px solid #111;
+
+    background:#fafafa;
+
+    transition:.35s;
+
+}
+
+.education-card:hover{
+
+    transform:translateX(6px);
+
+    box-shadow:0 10px 25px rgba(0,0,0,.06);
+
+}
+
+.education-card h4{
+
+    font-size:17px;
+
+    font-weight:700;
+
+    color:#111;
+
+}
+
+.education-card h5{
+
+    margin-top:5px;
+
+    font-size:15px;
+
+    font-weight:600;
+
+    color:#555;
+
+}
+
+.education-card p{
+
+    margin-top:6px;
+
+    color:#666;
+
+}
+
+.education-bottom{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    margin-top:12px;
+
+    font-size:13px;
+
+    font-weight:600;
+
+    color:#777;
+
+}
+
+/* ==========================================================
+   PROJECTS
+========================================================== */
+
+.project-card{
+
+    margin-bottom:24px;
+
+    padding:18px 20px;
+
+    background:#fcfcfc;
+
+    border-left:4px solid #111;
+
+    transition:.35s;
+
+}
+
+.project-card:hover{
+
+    transform:translateX(6px);
+
+    box-shadow:0 12px 24px rgba(0,0,0,.06);
+
+}
+
+.project-card h4{
+
+    font-size:17px;
+
+    font-weight:700;
+
+    color:#111;
+
+}
+
+.project-card h5{
+
+    margin-top:5px;
+
+    font-size:14px;
+
+    font-weight:600;
+
+    color:#666;
+
+}
+
+.project-card p{
+
+    margin-top:10px;
+
+    line-height:1.8;
+
+}
+
+.project-links{
+
+    display:flex;
+
+    gap:16px;
+
+    margin-top:14px;
+
+}
+
+.project-links a{
+
+    color:#111;
+
+    text-decoration:none;
+
+    font-weight:600;
+
+    border-bottom:2px solid transparent;
+
+    transition:.3s;
+
+}
+
+.project-links a:hover{
+
+    border-color:#111;
+
+}
+
+
+
+
+
+
+
+
+/* ==========================================================
+   PART 3 : ADDITIONAL • CERTIFICATES • RESPONSIVE • PRINT
+========================================================== */
+
+/* ==========================================================
+   CERTIFICATES
+========================================================== */
+
+.certificate-item{
+
+    margin-bottom:18px;
+
+    padding-bottom:14px;
+
+    border-bottom:1px solid rgba(0,0,0,.15);
+
+}
+
+.certificate-item:last-child{
+
+    border-bottom:none;
+
+}
+
+.certificate-item strong{
+
+    display:block;
+
+    font-size:14px;
+
+    font-weight:700;
+
+    color:#111;
+
+    line-height:1.5;
+
+}
+
+.certificate-item small{
+
+    display:block;
+
+    margin-top:5px;
+
+    font-size:13px;
+
+    color:#666;
+
+}
+
+/* ==========================================================
+   SKILLS
+========================================================== */
+
+.skill-box{
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:10px;
+
+}
+
+.skill-box span{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:8px 16px;
+
+    border-radius:30px;
+
+    background:#111;
+
+    color:#ece4d8;
+
+    font-size:13px;
+
+    font-weight:600;
+
+    transition:.3s;
+
+}
+
+.skill-box span:hover{
+
+    transform:translateY(-2px);
+
+}
+
+/* ==========================================================
+   ADDITIONAL INFORMATION
+========================================================== */
+
+.additional-card{
+
+    margin-bottom:18px;
+
+    padding:18px 20px;
+
+    background:#fafafa;
+
+    border-left:4px solid #111;
+
+}
+
+.additional-card h4{
+
+    font-size:15px;
+
+    font-weight:700;
+
+    color:#111;
+
+    margin-bottom:8px;
+
+}
+
+.additional-card p{
+
+    line-height:1.8;
+
+    color:#555;
+
+}
+
+/* ==========================================================
+   LINKS
+========================================================== */
+
+.sidebar-section a,
+.project-links a{
+
+    color:#111;
+
+    font-weight:600;
+
+    text-decoration:none;
+
+}
+
+.sidebar-section a:hover,
+.project-links a:hover{
+
+    text-decoration:underline;
+
+}
+
+/* ==========================================================
+   REMOVE WATERMARK
+========================================================== */
+
+.resume-paper::before{
+
+    display:none;
+
+}
+
+/* ==========================================================
+   RESPONSIVE
+========================================================== */
+
+@media(max-width:1100px){
+
+.preview-navbar{
+
+    width:96%;
+
+    padding:14px 18px;
+
+}
+
+.resume-paper{
+
+    width:100%;
+
+}
+
+.resume-row{
+
+    grid-template-columns:1fr;
+
+}
+
+.left-column{
+
+    padding:35px;
+
+}
+
+.right-column{
+
+    padding:35px;
+
+}
+
+.resume-header h1{
+
+    font-size:34px;
+
+    white-space:normal;
+
+}
+
+.resume-header h2{
+
+    font-size:15px;
+
+}
+
+}
+
+/* ==========================================================
+   MOBILE
+========================================================== */
+
+@media(max-width:700px){
+
+body{
+
+    padding:90px 10px 20px;
+
+}
+
+.preview-navbar{
+
+    flex-direction:column;
+
+    gap:15px;
+
+}
+
+.nav-left,
+.nav-right{
+
+    width:100%;
+
+    justify-content:center;
+
+    flex-wrap:wrap;
+
+}
+
+.back-btn,
+.nav-btn,
+.download-btn{
+
+    width:100%;
+
+}
+
+.resume-header h1{
+
+    font-size:28px;
+
+    letter-spacing:1px;
+
+}
+
+.resume-header h2{
+
+    letter-spacing:2px;
+
+}
+
+}
+
+/* ==========================================================
+   PRINT
+========================================================== */
+
+@page{
+
+    size:A4;
+
+    margin:0;
+
+}
+
+@media print{
+
+html,
+body{
+
+    width:210mm;
+
+    height:auto;
+
+    margin:0;
+
+    padding:0;
+
+    background:#fff;
+
+    -webkit-print-color-adjust:exact;
+
+    print-color-adjust:exact;
+
+}
+
+.preview-navbar{
+
+    display:none !important;
+
+}
+
+.preview-page{
+
+    margin:0;
+
+    padding:0;
+
+}
+
+.resume-paper{
+
+    width:210mm !important;
+
+    min-height:297mm;
+
+    margin:0;
+
+    box-shadow:none;
+
+    border:none;
+
+    page-break-after:auto;
+
+}
+
+.resume-row{
+
+    display:grid !important;
+
+    grid-template-columns:32% 68% !important;
+
+}
+
+.left-column{
+
+    background:#ece4d8 !important;
+
+}
+
+.right-column{
+
+    background:#fff !important;
+
+}
+
+.resume-paper::after{
+
+    border-left:10px solid #111;
+
+    border-bottom:10px solid #111;
+
+}
+
+*{
+
+    break-inside:avoid;
+
+    page-break-inside:avoid;
+
+}
+
+}
+
+/* ==========================================================
+   FINISHING TOUCHES
+========================================================== */
+
+::selection{
+
+    background:#111;
+
+    color:#fff;
+
+}
+
+.resume-paper{
+
+    border-radius:4px;
+
+}
+
+.education-card,
+.project-card,
+.additional-card{
+
+    border-radius:8px;
+
+}
+
+.initial-circle{
+
+    border:5px solid #ece4d8;
+
+}

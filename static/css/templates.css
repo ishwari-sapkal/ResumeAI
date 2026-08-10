@@ -1,0 +1,766 @@
+/* ===================================================
+   TEMPLATE CARD
+=================================================== */
+
+.template-card{
+
+display:flex;
+
+align-items:center;
+
+gap:40px;
+
+background:#ffffff;
+
+padding:35px;
+
+border-radius:24px;
+
+margin-bottom:35px;
+
+border:1px solid #e5e7eb;
+
+box-shadow:0 12px 30px rgba(15,23,42,.05);
+
+transition:.35s;
+
+}
+
+.template-card:hover{
+
+transform:translateY(-6px);
+
+box-shadow:0 22px 45px rgba(37,99,235,.12);
+
+border-color:#bfdbfe;
+
+}
+
+/* ===================================================
+   PREVIEW PAPER
+=================================================== */
+
+.template-preview{
+
+width:260px;
+
+height:340px;
+
+background:#ffffff;
+
+border-radius:12px;
+
+border:1px solid #dbe4ee;
+
+box-shadow:0 10px 25px rgba(15,23,42,.08);
+
+padding:18px;
+
+flex-shrink:0;
+
+overflow:hidden;
+
+transition:.35s;
+
+}
+
+.template-card:hover .template-preview{
+
+transform:scale(1.03);
+
+}
+
+/* ===================================================
+   COMMON MINI ELEMENTS
+=================================================== */
+
+.mini-name{
+
+width:70%;
+
+height:12px;
+
+background:#0f172a;
+
+border-radius:20px;
+
+margin:0 auto 12px;
+
+}
+
+.mini-role{
+
+width:45%;
+
+height:8px;
+
+background:#94a3b8;
+
+border-radius:20px;
+
+margin:0 auto 18px;
+
+}
+
+.mini-line{
+
+height:1px;
+
+background:#dbe4ee;
+
+margin-bottom:18px;
+
+}
+
+.mini-heading{
+
+width:38%;
+
+height:8px;
+
+background:#2563eb;
+
+border-radius:20px;
+
+margin-bottom:10px;
+
+}
+
+.mini-text{
+
+width:100%;
+
+height:6px;
+
+background:#d1d5db;
+
+border-radius:20px;
+
+margin-bottom:8px;
+
+}
+
+.mini-text.short{
+
+width:70%;
+
+}
+
+/* ===================================================
+   PROFESSIONAL
+=================================================== */
+
+.professional-preview{
+
+display:flex;
+
+flex-direction:column;
+
+}
+
+/* ===================================================
+   INFO
+=================================================== */
+
+.template-info{
+
+flex:1;
+
+}
+
+.template-info h2{
+
+font-size:30px;
+
+font-weight:700;
+
+color:#0f172a;
+
+margin:18px 0;
+
+}
+
+.template-info p{
+
+font-size:16px;
+
+line-height:1.8;
+
+color:#64748b;
+
+margin-bottom:22px;
+
+}
+
+.template-info ul{
+
+list-style:none;
+
+display:flex;
+
+flex-direction:column;
+
+gap:12px;
+
+margin-bottom:28px;
+
+padding:0;
+
+}
+
+.template-info li{
+
+display:flex;
+
+align-items:center;
+
+gap:12px;
+
+font-size:15px;
+
+color:#334155;
+
+}
+
+.template-info li i{
+
+color:#2563eb;
+
+}
+
+/* ===================================================
+   MODERN TEMPLATE PREVIEW
+=================================================== */
+
+.modern-preview{
+
+display:flex;
+
+flex-direction:column;
+
+gap:14px;
+
+}
+
+.modern-header{
+
+height:45px;
+
+background:#2563eb;
+
+border-radius:20px;
+
+margin-bottom:8px;
+
+}
+
+.modern-columns{
+
+display:grid;
+
+grid-template-columns:1fr 1fr;
+
+gap:18px;
+
+flex:1;
+
+}
+
+.modern-left,
+
+.modern-right{
+
+display:flex;
+
+flex-direction:column;
+
+}
+
+/* ===================================================
+   CREATIVE TEMPLATE PREVIEW
+=================================================== */
+
+.creative-preview{
+
+display:flex;
+
+padding:0;
+
+overflow:hidden;
+
+}
+
+.creative-sidebar{
+
+width:70px;
+
+background:linear-gradient(
+
+180deg,
+
+#2563eb,
+
+#3b82f6
+
+);
+
+display:flex;
+
+flex-direction:column;
+
+align-items:center;
+
+padding:16px 10px;
+
+gap:14px;
+
+}
+
+.creative-avatar{
+
+width:42px;
+
+height:42px;
+
+border-radius:50%;
+
+background:#ffffff;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+font-size:16px;
+
+font-weight:800;
+
+color:#2563eb;
+
+}
+
+.creative-line{
+
+width:100%;
+
+height:6px;
+
+background:rgba(255,255,255,.75);
+
+border-radius:20px;
+
+}
+
+.creative-line.short{
+
+width:70%;
+
+}
+
+.creative-content{
+
+flex:1;
+
+padding:18px;
+
+display:flex;
+
+flex-direction:column;
+
+}
+
+/* ===================================================
+   BADGES
+=================================================== */
+
+.badge{
+
+display:inline-flex;
+
+align-items:center;
+
+padding:8px 16px;
+
+border-radius:50px;
+
+font-size:13px;
+
+font-weight:700;
+
+letter-spacing:.4px;
+
+}
+
+.badge.ats{
+
+background:#dcfce7;
+
+color:#15803d;
+
+}
+
+.badge.popular{
+
+background:#dbeafe;
+
+color:#1d4ed8;
+
+}
+
+.badge.creative{
+
+background:#ede9fe;
+
+color:#7c3aed;
+
+}
+
+/* ===================================================
+   BUTTON
+=================================================== */
+
+.use-template-btn{
+
+display:inline-flex;
+
+align-items:center;
+
+gap:10px;
+
+padding:16px 28px;
+
+border:none;
+
+border-radius:16px;
+
+background:linear-gradient(
+
+135deg,
+
+#2563eb,
+
+#3b82f6
+
+);
+
+color:#ffffff;
+
+font-size:15px;
+
+font-weight:700;
+
+cursor:pointer;
+
+transition:.35s;
+
+box-shadow:0 15px 30px rgba(37,99,235,.20);
+
+}
+
+.use-template-btn:hover{
+
+transform:translateY(-3px);
+
+box-shadow:0 22px 40px rgba(37,99,235,.28);
+
+}
+
+.use-template-btn i{
+
+transition:.3s;
+
+}
+
+.use-template-btn:hover i{
+
+transform:translateX(5px);
+
+}
+
+/* ===================================================
+   ACTIVE CARD
+=================================================== */
+
+.active-card{
+
+border-color:#93c5fd;
+
+box-shadow:0 24px 50px rgba(37,99,235,.16);
+
+}
+
+/* ===================================================
+   RESPONSIVE DESIGN
+=================================================== */
+
+/* ===================================================
+   LARGE TABLET / SMALL DESKTOP
+=================================================== */
+
+@media (max-width:1200px){
+
+    .template-card{
+        gap:30px;
+        padding:30px;
+    }
+
+    .template-preview{
+        width:220px;
+        height:300px;
+        flex-shrink:0;
+    }
+
+    .template-info{
+        flex:1;
+        min-width:0;
+    }
+
+    .template-info h2{
+        font-size:26px;
+    }
+
+}
+
+
+/* ===================================================
+   TABLET
+=================================================== */
+
+@media (max-width:992px){
+
+    .template-card{
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+        justify-content:center;
+        gap:28px;
+        text-align:center;
+        padding:30px;
+    }
+
+    .template-preview{
+        width:260px;
+        height:340px;
+        max-width:100%;
+        flex-shrink:0;
+    }
+
+    .template-info{
+        width:100%;
+        max-width:600px;
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+    }
+
+    .template-info h2{
+        font-size:26px;
+    }
+
+    .template-info p{
+        max-width:560px;
+    }
+
+    .template-info ul{
+        width:100%;
+        align-items:center;
+        padding:0;
+    }
+
+    .template-info li{
+        justify-content:center;
+        text-align:center;
+    }
+
+    .use-template-btn{
+        margin:8px auto 0;
+    }
+
+}
+
+
+/* ===================================================
+   MOBILE
+=================================================== */
+/* ===================================================
+   MOBILE - TEMPLATE SECTION
+=================================================== */
+
+@media (max-width: 768px){
+
+    /* ===============================
+       TEMPLATE GRID
+    =============================== */
+
+    .template-grid{
+        display:grid !important;
+        grid-template-columns:1fr !important;
+        width:100% !important;
+        gap:30px !important;
+        justify-items:center !important;
+    }
+
+
+    /* ===============================
+       TEMPLATE CARD
+    =============================== */
+
+    .template-card{
+        width:100% !important;
+        max-width:520px !important;
+        margin:0 auto !important;
+
+        display:flex !important;
+        flex-direction:column !important;
+        align-items:center !important;
+
+        padding:25px 20px !important;
+    }
+
+
+    /* ===============================
+       TEMPLATE PREVIEW
+    =============================== */
+
+    .template-preview{
+        width:260px !important;
+        height:340px !important;
+
+        max-width:100% !important;
+
+        flex:none !important;
+    }
+
+
+    /* ===============================
+       TEMPLATE CONTENT
+    =============================== */
+
+    .template-content{
+        width:100% !important;
+
+        text-align:center !important;
+
+        display:flex !important;
+        flex-direction:column !important;
+        align-items:center !important;
+    }
+
+
+    .template-content h3{
+        font-size:24px;
+        line-height:1.25;
+        margin-top:20px;
+    }
+
+
+    .template-content p{
+        width:100%;
+        max-width:450px;
+
+        font-size:15px;
+        line-height:1.6;
+
+        text-align:center;
+    }
+
+
+    /* ===============================
+       BUTTON
+    =============================== */
+
+    .template-content button{
+        width:100%;
+        max-width:260px;
+
+        margin-top:12px;
+    }
+
+}
+
+
+/* ===================================================
+   SMALL MOBILE
+=================================================== */
+
+@media (max-width:480px){
+
+    .template-grid{
+        grid-template-columns:1fr !important;
+        gap:25px !important;
+    }
+
+
+    .template-card{
+        width:100% !important;
+        max-width:100% !important;
+
+        padding:20px 15px !important;
+
+        border-radius:18px;
+    }
+
+
+    .template-preview{
+        width:230px !important;
+        height:310px !important;
+    }
+
+
+    .template-content h3{
+        font-size:22px;
+    }
+
+
+    .template-content p{
+        font-size:14px;
+        line-height:1.55;
+    }
+
+
+    .template-content button{
+        width:100%;
+        max-width:240px;
+    }
+
+}
+
+
+/* ===================================================
+   EXTRA SMALL MOBILE
+=================================================== */
+
+@media (max-width:360px){
+
+    .template-grid{
+        gap:20px !important;
+    }
+
+
+    .template-card{
+        padding:18px 12px !important;
+    }
+
+
+    .template-preview{
+        width:210px !important;
+        height:285px !important;
+    }
+
+
+    .template-content h3{
+        font-size:20px;
+    }
+
+
+    .template-content p{
+        font-size:13px;
+    }
+
+
+    .template-content button{
+        max-width:220px;
+    }
+
+}

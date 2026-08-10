@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Templates | ResumeAI</title>
+
+<link
+rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+<link
+rel="stylesheet"
+href="{{ url_for('static', filename='css/dashboard.css') }}">
+
+<link
+rel="stylesheet"
+href="{{ url_for('static', filename='css/templates.css') }}">
+
+</head>
+
+<body>
+
+<div class="dashboard">
+
+<!-- ================= SIDEBAR ================= -->
+
+<aside class="sidebar">
+
+<div class="logo">
+
+Resume<span>AI</span>
+
+</div>
+
+<nav>
+
+<button>
+
+<i class="fas fa-table-columns"></i>
+
+Dashboard
+
+</button>
+
+<button>
+
+<i class="fas fa-file-lines"></i>
+
+My Resume
+
+</button>
+
+<button class="active">
+
+<i class="fas fa-layer-group"></i>
+
+Templates
+
+</button>
+
+<button>
+
+<i class="fas fa-user"></i>
+
+Profile
+
+</button>
+
+<button class="logout">
+
+<i class="fas fa-right-from-bracket"></i>
+
+Logout
+
+</button>
+
+</nav>
+
+</aside>
+
+<!-- ================= MAIN ================= -->
+
+<main class="dashboard-main">
+
+<section class="welcome">
+
+<div>
+
+<h1>
+
+Resume Templates
+
+</h1>
+
+<p>
+
+Choose the perfect template for your next professional resume.
+
+</p>
+
+</div>
+
+</section>
+
+<!-- ===========================================
+PROFESSIONAL TEMPLATE
+=========================================== -->
+
+<div class="template-card">
+
+<div class="template-preview professional-preview">
+
+<div class="mini-name"></div>
+
+<div class="mini-role"></div>
+
+<div class="mini-line"></div>
+
+<div class="mini-heading"></div>
+
+<div class="mini-text"></div>
+
+<div class="mini-text short"></div>
+
+<div class="mini-heading"></div>
+
+<div class="mini-text"></div>
+
+<div class="mini-text"></div>
+
+<div class="mini-heading"></div>
+
+<div class="mini-text short"></div>
+
+</div>
+
+<div class="template-info">
+
+<span class="badge ats">
+
+ATS Friendly
+
+</span>
+
+<h2>
+
+Professional Resume
+
+</h2>
+
+<p>
+
+A clean one-column professional resume perfect for software engineers, internships, placements, government jobs and ATS systems.
+
+</p>
+
+<ul>
+
+<li>
+
+<i class="fas fa-check-circle"></i>
+
+ATS Optimized Layout
+
+</li>
+
+<li>
+
+<i class="fas fa-check-circle"></i>
+
+Clean Typography
+
+</li>
+
+<li>
+
+<i class="fas fa-check-circle"></i>
+
+Recruiter Friendly
+
+</li>
+
+</ul>
+
+<button
+
+class="use-template-btn"
+
+onclick="chooseTemplate('professional')">
+
+Use Template
+
+<i class="fas fa-arrow-right"></i>
+
+</button>
+
+</div>
+
+</div>
+
+    <!-- ===========================================
+     MODERN TEMPLATE
+=========================================== -->
+
+<div class="template-card">
+
+    <div class="template-preview modern-preview">
+
+        <div class="modern-header"></div>
+
+        <div class="modern-columns">
+
+            <div class="modern-left">
+
+                <div class="mini-heading"></div>
+
+                <div class="mini-text"></div>
+
+                <div class="mini-text short"></div>
+
+                <div class="mini-heading"></div>
+
+                <div class="mini-text"></div>
+
+            </div>
+
+            <div class="modern-right">
+
+                <div class="mini-heading"></div>
+
+                <div class="mini-text"></div>
+
+                <div class="mini-text"></div>
+
+                <div class="mini-heading"></div>
+
+                <div class="mini-text short"></div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="template-info">
+
+        <span class="badge popular">
+
+            Most Popular
+
+        </span>
+
+        <h2>
+
+            Modern Resume
+
+        </h2>
+
+        <p>
+
+            A clean contemporary resume with balanced sections, perfect for developers, software engineers and fresh graduates looking for a stylish professional look.
+
+        </p>
+
+        <ul>
+
+            <li>
+
+                <i class="fas fa-check-circle"></i>
+
+                Elegant Modern Design
+
+            </li>
+
+            <li>
+
+                <i class="fas fa-check-circle"></i>
+
+                Balanced Layout
+
+            </li>
+
+            <li>
+
+                <i class="fas fa-check-circle"></i>
+
+                Great for Tech Roles
+
+            </li>
+
+        </ul>
+
+        <button
+
+            class="use-template-btn"
+
+            onclick="chooseTemplate('modern')">
+
+            Use Template
+
+            <i class="fas fa-arrow-right"></i>
+
+        </button>
+
+    </div>
+
+</div>
+
+<!-- ===========================================
+     CREATIVE TEMPLATE
+=========================================== -->
+
+<div class="template-card">
+
+    <div class="template-preview creative-preview">
+
+        <div class="creative-sidebar">
+
+            <div class="creative-avatar">
+
+                IS
+
+            </div>
+
+            <div class="creative-line"></div>
+
+            <div class="creative-line short"></div>
+
+            <div class="creative-line"></div>
+
+        </div>
+
+        <div class="creative-content">
+
+            <div class="mini-heading"></div>
+
+            <div class="mini-text"></div>
+
+            <div class="mini-text"></div>
+
+            <div class="mini-heading"></div>
+
+            <div class="mini-text short"></div>
+
+            <div class="mini-heading"></div>
+
+            <div class="mini-text"></div>
+
+        </div>
+
+    </div>
+
+    <div class="template-info">
+
+        <span class="badge creative">
+
+            Designer Choice
+
+        </span>
+
+        <h2>
+
+            Creative Resume
+
+        </h2>
+
+        <p>
+
+            A bold resume with a stylish sidebar and premium visual hierarchy, ideal for UI/UX designers, creatives and modern portfolios.
+
+        </p>
+
+        <ul>
+
+            <li>
+
+                <i class="fas fa-check-circle"></i>
+
+                Premium Sidebar Layout
+
+            </li>
+
+            <li>
+
+                <i class="fas fa-check-circle"></i>
+
+                Unique Appearance
+
+            </li>
+
+            <li>
+
+                <i class="fas fa-check-circle"></i>
+
+                Creative & Modern
+
+            </li>
+
+        </ul>
+
+        <button
+
+            class="use-template-btn"
+
+            onclick="chooseTemplate('creative')">
+
+            Use Template
+
+            <i class="fas fa-arrow-right"></i>
+
+        </button>
+
+    </div>
+
+</div>
+
+    <!-- ===========================================
+     JAVASCRIPT
+=========================================== -->
+
+</main>
+
+</div>
+
+<script>
+
+/* ===========================================
+   CHOOSE TEMPLATE
+   (Same functionality as Template Selection)
+=========================================== */
+
+function chooseTemplate(template){
+
+localStorage.setItem("selectedTemplate",template);
+
+window.location.href="/builder";
+
+}
+
+/* ===========================================
+   SIDEBAR NAVIGATION
+=========================================== */
+
+const sidebarButtons=document.querySelectorAll(".sidebar nav button");
+
+sidebarButtons.forEach((button)=>{
+
+button.addEventListener("click",function(){
+
+const text=this.textContent.trim();
+
+switch(text){
+
+case "Dashboard":
+
+window.location.href="/dashboard";
+
+break;
+
+case "My Resume":
+
+window.location.href="/my-resume";
+
+break;
+
+case "Templates":
+
+window.location.href="/templates";
+
+break;
+
+case "Profile":
+
+window.location.href="/profile";
+
+break;
+
+case "Logout":
+
+if(confirm("Are you sure you want to logout?")){
+
+window.location.href="/";
+
+}
+
+break;
+
+}
+
+});
+
+});
+
+/* ===========================================
+   HOVER EFFECT
+=========================================== */
+
+const cards=document.querySelectorAll(".template-card");
+
+cards.forEach((card)=>{
+
+card.addEventListener("mouseenter",()=>{
+
+card.classList.add("active-card");
+
+});
+
+card.addEventListener("mouseleave",()=>{
+
+card.classList.remove("active-card");
+
+});
+
+});
+
+</script>
+
+</body>
+
+</html>

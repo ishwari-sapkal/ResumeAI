@@ -1,0 +1,421 @@
+/* =====================================================
+   HERO SECTION
+===================================================== */
+
+.hero{
+    width:100%;
+    min-height:100vh;
+    background:#ffffff;
+    position:relative;
+    overflow:hidden;
+    display:flex;
+    align-items:center;
+    padding:150px 0 90px;
+}
+
+.hero-container{
+    width:min(1600px,92%);
+    margin:auto;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    align-items:center;
+    gap:70px;
+    position:relative;
+    z-index:2;
+}
+
+/* ================= Background Blur ================= */
+
+.blur{
+    position:absolute;
+    border-radius:50%;
+    filter:blur(120px);
+    z-index:0;
+}
+
+.blur1{
+    width:520px;
+    height:520px;
+    background:#60a5fa;
+    left:-180px;
+    top:-120px;
+    opacity:.25;
+}
+
+.blur2{
+    width:450px;
+    height:450px;
+    background:#2563eb;
+    right:-140px;
+    bottom:-140px;
+    opacity:.20;
+}
+
+/* ================= Left ================= */
+
+.hero-left{
+    position:relative;
+    z-index:5;
+}
+
+.hero-badge{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    padding:12px 24px;
+    background:#eff6ff;
+    color:#2563eb;
+    border-radius:999px;
+    font-size:15px;
+    font-weight:600;
+    margin-bottom:30px;
+}
+
+.hero-left h1{
+    font-size:74px;
+    line-height:1.05;
+    font-weight:800;
+    letter-spacing:-2px;
+    color:#0f172a;
+    margin-bottom:28px;
+}
+
+.hero-left h1 span{
+    color:#2563eb;
+}
+
+.hero-left p{
+    max-width:620px;
+    font-size:20px;
+    line-height:1.8;
+    color:#64748b;
+}
+
+/* ================= Buttons ================= */
+
+.hero-buttons{
+    display:flex;
+    gap:18px;
+    margin-top:45px;
+    flex-wrap:wrap;
+}
+
+.primary-btn{
+    border:none;
+    outline:none;
+    cursor:pointer;
+    padding:18px 38px;
+    border-radius:999px;
+    background:linear-gradient(135deg,#2563eb,#60a5fa);
+    color:#fff;
+    font-size:17px;
+    font-weight:700;
+    transition:.35s;
+    box-shadow:0 18px 35px rgba(37,99,235,.28);
+}
+
+.primary-btn:hover{
+    transform:translateY(-4px);
+}
+
+.secondary-btn{
+    border:2px solid #dbeafe;
+    background:#fff;
+    color:#2563eb;
+    cursor:pointer;
+    padding:18px 36px;
+    border-radius:999px;
+    font-size:17px;
+    font-weight:700;
+    transition:.35s;
+}
+
+.secondary-btn:hover{
+    background:#eff6ff;
+}
+
+/* ================= Stats ================= */
+
+.hero-stats{
+    display:flex;
+    gap:65px;
+    margin-top:60px;
+    flex-wrap:wrap;
+}
+
+.hero-stats h2{
+    font-size:40px;
+    color:#0f172a;
+    margin-bottom:5px;
+}
+
+.hero-stats span{
+    color:#64748b;
+    font-size:15px;
+}
+
+/* ================= Right ================= */
+
+.hero-right{
+    position:relative;
+    display:flex;
+    justify-content:center;
+    align-items:flex-start;
+}
+
+/* =====================================================
+   RESUME SHOWCASE
+===================================================== */
+
+.resume-card{
+    width:480px;
+    min-height:560px;
+    background:#ffffff;
+    border-radius:35px;
+    padding:35px;
+    box-shadow:0 30px 80px rgba(0,0,0,.08);
+    position:relative;
+    z-index:2;
+}
+
+.resume-header{
+    display:flex;
+    align-items:center;
+    gap:18px;
+    margin-bottom:30px;
+}
+
+.profile{
+    width:80px;
+    height:80px;
+    border-radius:50%;
+    background:#dbeafe;
+    flex-shrink:0;
+}
+
+.resume-header h3{
+    font-size:28px;
+    color:#0f172a;
+    margin-bottom:6px;
+}
+
+.resume-header p{
+    color:#64748b;
+    font-size:15px;
+}
+
+/* ================= Resume Sections ================= */
+
+.resume-section{
+    margin-top:28px;
+}
+
+.resume-section h4{
+    color:#0f172a;
+    font-size:15px;
+    font-weight:600;
+    margin-bottom:12px;
+}
+
+.line{
+    width:100%;
+    height:8px;
+    border-radius:999px;
+    background:#e5e7eb;
+    margin:10px 0;
+}
+
+.line.small{
+    width:65%;
+}
+
+/* ================= Skills ================= */
+
+.skills{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-top:15px;
+}
+
+.skills span{
+    padding:8px 16px;
+    border-radius:999px;
+    background:#dbeafe;
+    color:#0f172a;
+    font-size:13px;
+    font-weight:600;
+}
+
+/* ================= Floating Cards ================= */
+
+.floating-card{
+    position:absolute;
+    background:#ffffff;
+    padding:18px 24px;
+    border-radius:24px;
+    box-shadow:0 18px 45px rgba(0,0,0,.10);
+    z-index:5;
+}
+
+.score{
+    top:40px;
+    left:-35px;
+}
+
+.ai{
+    bottom:40px;
+    right:-35px;
+}
+
+.floating-card h3{
+    margin-top:8px;
+    color:#2563eb;
+    font-size:28px;
+}
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media (max-width:1200px){
+
+.hero-container{
+    grid-template-columns:1fr;
+    text-align:center;
+}
+
+.hero-left p{
+    margin:auto;
+}
+
+.hero-buttons,
+.hero-stats{
+    justify-content:center;
+}
+
+.hero-right{
+    margin-top:60px;
+    align-items:center;
+}
+
+.score{
+    left:10px;
+}
+
+.ai{
+    right:10px;
+}
+
+}
+
+@media (max-width:768px){
+
+.hero{
+    padding-top:120px;
+    padding-bottom:70px;
+}
+
+.hero-left h1{
+    font-size:48px;
+    line-height:1.15;
+    letter-spacing:-1px;
+}
+
+.hero-left p{
+    font-size:17px;
+}
+
+.hero-buttons{
+    justify-content:center;
+}
+
+.hero-stats{
+    gap:35px;
+}
+
+.resume-card{
+    width:100%;
+    max-width:420px;
+    min-height:auto;
+    padding:28px;
+}
+
+.resume-header h3{
+    font-size:22px;
+}
+
+.profile{
+    width:65px;
+    height:65px;
+}
+
+.skills span{
+    font-size:12px;
+    padding:7px 14px;
+}
+
+.floating-card{
+    display:none;
+}
+
+}
+
+@media (max-width:480px){
+
+.hero{
+    padding-top:100px;
+}
+
+.hero-left h1{
+    font-size:38px;
+}
+
+.hero-left p{
+    font-size:15px;
+}
+
+.hero-badge{
+    font-size:13px;
+    padding:10px 18px;
+}
+
+.primary-btn,
+.secondary-btn{
+    width:100%;
+    justify-content:center;
+    text-align:center;
+    padding:16px;
+}
+
+.hero-buttons{
+    flex-direction:column;
+}
+
+.hero-stats{
+    justify-content:center;
+    gap:25px;
+}
+
+.resume-card{
+    padding:22px;
+    border-radius:25px;
+}
+
+.resume-header{
+    gap:14px;
+}
+
+.resume-header h3{
+    font-size:20px;
+}
+
+.resume-header p{
+    font-size:13px;
+}
+
+.resume-section{
+    margin-top:22px;
+}
+
+}

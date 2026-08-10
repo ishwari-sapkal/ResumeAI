@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>ResumeForge</title>
+
+    <!-- Font Awesome -->
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <!-- CSS -->
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/navbar.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/hero.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/trusted.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/features.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/home_template.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/howitworks.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/testimonials.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/faq.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/cta.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/footer.css') }}">
+
+</head>
+
+<body>
+
+    {% include 'components/layout/Navbar.html' %}
+
+    {% include 'components/layout/Hero.html' %}
+
+    {% include 'components/layout/Trusted.html' %}
+
+    {% include 'components/layout/Features.html' %}
+
+    {% include 'components/layout/Templates.html' %}
+
+    {% include 'components/layout/HowItWorks.html' %}
+
+    {% include 'components/layout/Testimonials.html' %}
+
+    {% include 'components/layout/FAQ.html' %}
+
+    {% include 'components/layout/CTA.html' %}
+
+    {% include 'components/layout/Footer.html' %}
+
+
+<script src="{{ url_for('static', filename='js/navbar.js') }}"></script>
+</body>
+
+</html>

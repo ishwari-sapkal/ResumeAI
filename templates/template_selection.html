@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Choose Resume Template</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/templateselection.css') }}">
+
+</head>
+
+<body>
+
+<div class="template-page">
+
+    <!-- ================= HEADER ================= -->
+
+    <div class="template-header">
+
+        <span class="template-badge">
+
+            AI Resume Builder
+
+        </span>
+
+        <h1>
+
+            Choose Your Resume Template
+
+        </h1>
+
+        <p>
+
+            Pick a professional template that reflects your personality.
+            Your information will automatically appear in the selected design.
+
+        </p>
+
+    </div>
+
+    <!-- ================= TEMPLATE GRID ================= -->
+
+    <div class="template-grid">
+
+        <!-- =====================================================
+                     PROFESSIONAL TEMPLATE
+        ====================================================== -->
+
+        <div
+            class="template-card"
+            data-template="professional">
+
+            <!-- Card Top -->
+
+            <div class="card-top">
+
+                <span class="template-tag">
+
+                    ATS Friendly
+
+                </span>
+
+            </div>
+
+            <!-- Preview -->
+
+            <div class="resume-preview professional">
+
+                <div class="pro-header">
+
+                    <h4>
+
+                        Ishwari Sapkal
+
+                    </h4>
+
+                    <span>
+
+                        AI Business Intelligence Analyst
+
+                    </span>
+
+                </div>
+
+                <div class="pro-contact">
+
+                    <div></div>
+
+                    <div></div>
+
+                    <div class="small"></div>
+
+                </div>
+
+                <div class="section-title"></div>
+
+                <div class="line"></div>
+
+                <div class="line short"></div>
+
+                <div class="section-title"></div>
+
+                <div class="line"></div>
+
+                <div class="line"></div>
+
+                <div class="line short"></div>
+
+                <div class="section-title"></div>
+
+                <div class="skills">
+
+                    <span></span>
+
+                    <span></span>
+
+                    <span></span>
+
+                    <span></span>
+
+                </div>
+
+            </div>
+
+            <!-- Card Content -->
+
+            <div class="template-info">
+
+                <h2>
+
+                    Professional
+
+                </h2>
+
+                <p>
+
+                    Perfect for corporate jobs,
+                    internships and placements.
+
+                </p>
+
+                <button
+                    class="use-btn"
+                    data-template="professional">
+
+                    Use Template
+
+                </button>
+
+            </div>
+
+        </div>
+
+                <!-- =====================================================
+                        MODERN TEMPLATE
+        ====================================================== -->
+
+        <div
+            class="template-card"
+            data-template="modern">
+
+            <div class="card-top">
+
+                <span class="template-tag">
+
+                    Minimal
+
+                </span>
+
+            </div>
+
+            <div class="resume-preview modern">
+
+                <div class="modern-banner">
+
+                    <div class="modern-avatar"></div>
+
+                    <div class="modern-name">
+
+                        <h4>
+
+                            Ishwari Sapkal
+
+                        </h4>
+
+                        <span>
+
+                            AI Business Analyst
+
+                        </span>
+
+                    </div>
+
+                </div>
+
+                <div class="modern-card"></div>
+
+                <div class="modern-line"></div>
+
+                <div class="modern-line short"></div>
+
+                <div class="modern-card"></div>
+
+                <div class="modern-line"></div>
+
+                <div class="modern-line"></div>
+
+                <div class="modern-card"></div>
+
+                <div class="modern-skills">
+
+                    <span></span>
+
+                    <span></span>
+
+                    <span></span>
+
+                    <span></span>
+
+                </div>
+
+            </div>
+
+            <div class="template-info">
+
+                <h2>
+
+                    Modern
+
+                </h2>
+
+                <p>
+
+                    A clean and elegant resume for freshers and developers.
+
+                </p>
+
+                <button
+                    class="use-btn"
+                    data-template="modern">
+
+                    Use Template
+
+                </button>
+
+            </div>
+
+        </div>
+
+        <!-- =====================================================
+                        CREATIVE TEMPLATE
+        ====================================================== -->
+
+        <div
+            class="template-card"
+            data-template="creative">
+
+            <div class="card-top">
+
+                <span class="template-tag">
+
+                    Designer
+
+                </span>
+
+            </div>
+
+            <div class="resume-preview creative">
+
+                <div class="creative-left">
+
+                    <div class="creative-avatar"></div>
+
+                    <div class="creative-heading"></div>
+
+                    <div class="creative-small"></div>
+
+                    <div class="creative-heading"></div>
+
+                    <div class="creative-box"></div>
+
+                    <div class="creative-box"></div>
+
+                </div>
+
+                <div class="creative-right">
+
+                    <h4>
+
+                        Ishwari Sapkal
+
+                    </h4>
+
+                    <span>
+
+                        UI / AI Business Analyst
+
+                    </span>
+
+                    <div class="creative-title"></div>
+
+                    <div class="creative-line"></div>
+
+                    <div class="creative-line short"></div>
+
+                    <div class="creative-title"></div>
+
+                    <div class="creative-line"></div>
+
+                    <div class="creative-line"></div>
+
+                    <div class="creative-title"></div>
+
+                    <div class="creative-line short"></div>
+
+                </div>
+
+            </div>
+
+            <div class="template-info">
+
+                <h2>
+
+                    Creative
+
+                </h2>
+
+                <p>
+
+                    Best for UI/UX, Designers and Creative Professionals.
+
+                </p>
+
+                <button
+                    class="use-btn"
+                    data-template="creative">
+
+                    Use Template
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
+<script>
+
+// =======================================================
+// Resume Template Selection
+// =======================================================
+
+const templateRoutes = {
+
+    professional : "/professional-template",
+
+    modern : "/modern-template",
+
+    creative : "/creative-template"
+
+};
+
+
+// =======================================================
+// Use Template Button
+// =======================================================
+
+const buttons = document.querySelectorAll(".use-btn");
+
+buttons.forEach((button)=>{
+
+    button.addEventListener("click",function(){
+
+        const selectedTemplate =
+        this.getAttribute("data-template");
+
+        // Save Selected Template
+
+        localStorage.setItem(
+            "selectedTemplate",
+            selectedTemplate
+        );
+
+        // Save Preview Route
+
+        localStorage.setItem(
+            "templateRoute",
+            templateRoutes[selectedTemplate]
+        );
+
+        // Redirect to Resume Builder
+
+        window.location.href="/builder";
+
+    });
+
+});
+
+</script>
+
+</body>
+
+</html>

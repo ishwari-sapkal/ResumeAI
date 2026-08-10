@@ -1,0 +1,174 @@
+<section class="testimonial-section">
+
+    <div class="testimonial-heading">
+
+        <span>TESTIMONIALS</span>
+
+        <h2>
+            Loved By Students
+            <br>
+            & Professionals
+        </h2>
+
+        <p>
+            Real experiences from people who built their career with our resume tools.
+        </p>
+
+        <div class="slider-buttons">
+
+            <button id="prevSlide">
+                ←
+            </button>
+
+            <button id="nextSlide">
+                →
+            </button>
+
+        </div>
+
+    </div>
+
+    <div class="testimonial-slider">
+
+        <div
+            class="testimonial-track"
+            id="testimonialTrack">
+
+            <!-- Review 1 -->
+
+            <div class="testimonial-card">
+
+                <div class="quote">"</div>
+
+                <p>
+                    This resume builder helped me create a professional
+                    resume within minutes. The ATS score feature is amazing.
+                </p>
+
+                <div class="profile-area">
+
+                    <div class="avatar">
+                        U
+                    </div>
+
+                    <div>
+
+                        <h4>
+                            Unnati Nannavare
+                        </h4>
+
+                        <span>
+                            Software Engineer
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- Review 2 -->
+
+            <div class="testimonial-card">
+
+                <div class="quote">"</div>
+
+                <p>
+                    Beautiful templates and a very smooth experience.
+                    I landed interviews much faster with my new resume.
+                </p>
+
+                <div class="profile-area">
+
+                    <div class="avatar">
+                        I
+                    </div>
+
+                    <div>
+
+                        <h4>
+                            Ishwari Sapkal
+                        </h4>
+
+                        <span>
+                            UI/UX Designer
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- Review 3 -->
+
+            <div class="testimonial-card">
+
+                <div class="quote">"</div>
+
+                <p>
+                    The templates are clean and professional.
+                    Creating my resume became much easier.
+                </p>
+
+                <div class="profile-area">
+
+                    <div class="avatar">
+                        R
+                    </div>
+
+                    <div>
+
+                        <h4>
+                            Rahul Patil
+                        </h4>
+
+                        <span>
+                            Frontend Developer
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<script>
+
+let active = 0;
+
+const track = document.getElementById("testimonialTrack");
+
+const totalSlides =
+document.querySelectorAll(".testimonial-card").length;
+
+document
+.getElementById("nextSlide")
+.addEventListener("click", function(){
+
+    active = (active + 1) % totalSlides;
+
+    track.style.transform =
+    `translateX(-${active * 100}%)`;
+
+});
+
+document
+.getElementById("prevSlide")
+.addEventListener("click", function(){
+
+    active =
+    (active - 1 + totalSlides) % totalSlides;
+
+    track.style.transform =
+    `translateX(-${active * 100}%)`;
+
+});
+
+</script>

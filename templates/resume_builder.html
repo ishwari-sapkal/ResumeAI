@@ -1,0 +1,2139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Resume Builder</title>
+
+<link
+rel="stylesheet"
+href="{{ url_for('static', filename='css/resumebuilder.css') }}">
+
+</head>
+
+<body>
+
+<div class="resume-builder-page">
+
+<div class="resume-builder-container">
+
+<!-- ========================================= -->
+<!-- HEADER -->
+<!-- ========================================= -->
+
+<div class="builder-header">
+
+<h1>
+
+Create Your Resume
+
+</h1>
+
+<p>
+
+Complete each section to generate your professional resume.
+
+</p>
+
+</div>
+
+<!-- ========================================= -->
+<!-- STEPPER -->
+<!-- ========================================= -->
+
+<div class="stepper">
+
+<div class="step active">
+
+<div class="circle">1</div>
+
+<span>Personal</span>
+
+</div>
+
+<div class="step">
+
+<div class="circle">2</div>
+
+<span>Summary</span>
+
+</div>
+
+<div class="step">
+
+<div class="circle">3</div>
+
+<span>Education</span>
+
+</div>
+
+<div class="step">
+
+<div class="circle">4</div>
+
+<span>Experience</span>
+
+</div>
+
+<div class="step">
+
+<div class="circle">5</div>
+
+<span>Projects</span>
+
+</div>
+
+<div class="step">
+
+<div class="circle">6</div>
+
+<span>Skills</span>
+
+</div>
+
+<div class="step">
+
+<div class="circle">7</div>
+
+<span>Certificates</span>
+
+</div>
+
+<div class="step">
+
+<div class="circle">8</div>
+
+<span>Languages</span>
+
+</div>
+
+<div class="step">
+
+<div class="circle">9</div>
+
+<span>Additional</span>
+
+</div>
+
+</div>
+
+<!-- ========================================= -->
+<!-- PROGRESS -->
+<!-- ========================================= -->
+
+<div class="builder-progress">
+
+<span id="stepText">
+
+</span>
+
+<div class="progress-bar">
+
+<div
+class="progress-fill"
+id="progressFill">
+
+</div>
+
+</div>
+
+</div>
+
+<!-- ========================================= -->
+<!-- FORM START -->
+<!-- ========================================= -->
+
+<form
+    id="resumeForm"
+    method="POST"
+    action="{% if edit_mode %}{{ url_for('update_resume', resume_id=resume._id) }}{% else %}{{ url_for('generate_resume') }}{% endif %}"
+    novalidate>
+
+
+    {% if edit_mode %}
+<input
+    type="hidden"
+    name="editMode"
+    value="true">
+{% endif %}
+
+<input
+
+type="hidden"
+
+id="templateInput"
+
+name="selectedTemplate"
+
+value="">
+
+<!-- ===================================================== -->
+<!-- STEP 1 : PERSONAL -->
+<!-- ===================================================== -->
+
+<div class="form-step">
+
+<div class="form-card">
+
+<h2>
+
+Personal Information
+
+</h2>
+
+<p>
+
+Fill your personal details.
+
+</p>
+
+<div class="form-grid">
+
+<div class="input-group">
+
+<label>Resume Title</label>
+
+<input
+type="text"
+name="resumeTitle"
+placeholder="Software Engineer Resume">
+
+</div>
+
+<div class="input-group">
+
+<label>Full Name *</label>
+
+<input
+type="text"
+name="fullName">
+
+</div>
+
+<div class="input-group">
+
+<label>Job Title *</label>
+
+<input
+type="text"
+name="jobTitle">
+
+</div>
+
+<div class="input-group">
+
+<label>Email *</label>
+
+<input
+type="email"
+name="email">
+
+</div>
+
+<div class="input-group">
+
+<label>Phone *</label>
+
+<input
+type="text"
+name="phone">
+
+</div>
+
+<div class="input-group">
+
+<label>Location</label>
+
+<input
+type="text"
+name="location">
+
+</div>
+
+<div class="input-group">
+
+<label>LinkedIn</label>
+
+<input
+type="url"
+name="linkedin">
+
+</div>
+
+<div class="input-group">
+
+<label>GitHub</label>
+
+<input
+type="url"
+name="github">
+
+</div>
+
+<div class="input-group">
+
+<label>Portfolio</label>
+
+<input
+type="url"
+name="portfolio">
+
+</div>
+
+
+
+</div>
+
+</div>
+
+</div>
+
+<!-- ===================================================== -->
+<!-- STEP 2 : SUMMARY -->
+<!-- ===================================================== -->
+
+<div
+class="form-step"
+generateBtn.style.display = "inline-flex";
+nextBtn.style.display = "none";>
+
+<div class="form-card">
+
+<h2>
+
+Professional Summary
+
+</h2>
+
+<p>
+
+Write a short professional introduction.
+
+</p>
+
+<div class="input-group">
+
+<label>Summary *</label>
+
+<textarea
+
+name="summary"
+
+rows="8"
+placeholder="Experienced Software Developer with strong knowledge of Python, Flask, React..."></textarea>
+
+</div>
+
+</div>
+
+</div>
+
+
+    <!-- ===================================================== -->
+<!-- STEP 3 : EDUCATION -->
+<!-- ===================================================== -->
+
+<div
+class="form-step"
+style="display:none;">
+
+<div class="form-card">
+
+<h2>
+
+Education
+
+</h2>
+
+<p>
+
+Add your educational qualifications.
+
+</p>
+
+<div id="educationContainer">
+
+<div class="education-item dynamic-card">
+
+<div class="form-grid">
+
+<div class="input-group">
+
+<label>Degree</label>
+
+<input
+type="text"
+name="degree[]"
+placeholder="Bachelor of Engineering">
+
+</div>
+
+<div class="input-group">
+
+<label>Institute</label>
+
+<input
+type="text"
+name="institute[]">
+
+</div>
+
+<div class="input-group">
+
+<label>University</label>
+
+<input
+type="text"
+name="university[]">
+
+</div>
+
+<div class="input-group">
+
+<label>Start Year</label>
+
+<input
+type="text"
+name="startYear[]">
+
+</div>
+
+<div class="input-group">
+
+<label>End Year</label>
+
+<input
+type="text"
+name="endYear[]">
+
+</div>
+
+<div class="input-group">
+
+<label>CGPA / Percentage</label>
+
+<input
+type="text"
+name="cgpa[]">
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<button
+type="button"
+class="add-btn"
+id="addEducation">
+
++ Add Education
+
+</button>
+
+</div>
+
+</div>
+
+<!-- ===================================================== -->
+<!-- STEP 4 : EXPERIENCE -->
+<!-- ===================================================== -->
+
+<div
+class="form-step"
+style="display:none;">
+
+<div class="form-card">
+
+<h2>
+
+Experience
+
+</h2>
+
+<p>
+
+Add your internships and work experience.
+
+</p>
+
+<div id="experienceContainer">
+
+<div class="experience-item dynamic-card">
+
+<div class="form-grid">
+
+<div class="input-group">
+
+<label>Company</label>
+
+<input
+type="text"
+name="company[]">
+
+</div>
+
+<div class="input-group">
+
+<label>Role</label>
+
+<input
+type="text"
+name="role[]">
+
+</div>
+
+<div class="input-group">
+
+<label>Employment Type</label>
+
+<select name="employmentType[]">
+
+<option value="">Select</option>
+
+<option>Full Time</option>
+
+<option>Part Time</option>
+
+<option>Internship</option>
+
+<option>Freelance</option>
+
+</select>
+
+</div>
+
+<div class="input-group">
+
+<label>Location</label>
+
+<input
+type="text"
+name="experienceLocation[]">
+
+</div>
+
+<div class="input-group">
+
+<label>Start Date</label>
+
+<input
+type="month"
+name="experienceStart[]">
+
+</div>
+
+<div class="input-group">
+
+<label>End Date</label>
+
+<input
+type="month"
+name="experienceEnd[]">
+
+</div>
+
+<div class="input-group full-width">
+
+<label>Description</label>
+
+<textarea
+rows="5"
+name="experienceDescription[]"></textarea>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<button
+type="button"
+class="add-btn"
+id="addExperience">
+
++ Add Experience
+
+</button>
+
+</div>
+
+</div>
+
+<!-- ===================================================== -->
+<!-- STEP 5 : PROJECTS -->
+<!-- ===================================================== -->
+
+<div
+class="form-step"
+style="display:none;">
+
+<div class="form-card">
+
+<h2>
+
+Projects
+
+</h2>
+
+<p>
+
+Showcase your best projects.
+
+</p>
+
+<div id="projectContainer">
+
+<div class="project-item dynamic-card">
+
+<div class="form-grid">
+
+<div class="input-group">
+
+<label>Project Title</label>
+
+<input
+type="text"
+name="projectTitle[]">
+
+</div>
+
+<div class="input-group">
+
+<label>Your Role</label>
+
+<input
+type="text"
+name="projectRole[]">
+
+</div>
+
+<div class="input-group">
+
+<label>Technologies</label>
+
+<input
+type="text"
+name="technologies[]"
+placeholder="React, Flask, MongoDB">
+
+</div>
+
+<div class="input-group">
+
+<label>Duration</label>
+
+<input
+type="text"
+name="duration[]">
+
+</div>
+
+<div class="input-group">
+
+<label>Team Size</label>
+
+<input
+type="number"
+name="teamSize[]">
+
+</div>
+
+<div class="input-group">
+
+<label>Project Type</label>
+
+<input
+type="text"
+name="projectType[]">
+
+</div>
+
+<div class="input-group">
+
+<label>GitHub Link</label>
+
+<input
+type="url"
+name="projectGithub[]">
+
+</div>
+
+<div class="input-group">
+
+<label>Live Demo</label>
+
+<input
+type="url"
+name="projectLive[]">
+
+</div>
+
+<div class="input-group full-width">
+
+<label>Description</label>
+
+<textarea
+rows="5"
+name="projectDescription[]"></textarea>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<button
+type="button"
+class="add-btn"
+id="addProject">
+
++ Add Project
+
+</button>
+
+</div>
+
+</div>
+
+
+    <!-- ===================================================== -->
+<!-- STEP 6 : SKILLS -->
+<!-- ===================================================== -->
+
+<div class="form-step" style="display:none;">
+
+<div class="form-card">
+
+<h2>Skills</h2>
+
+<p>Add all your technical and professional skills.</p>
+
+<div class="skills-section">
+
+<!-- Programming Languages -->
+
+<div class="skill-category">
+
+<h3>Programming Languages</h3>
+
+<div id="languageSkillContainer">
+
+<input
+type="text"
+name="skill_languages[]"
+class="skill-input"
+placeholder="Python">
+
+</div>
+
+<button
+type="button"
+class="add-btn"
+id="addLanguageSkill">
+
++ Add Language
+
+</button>
+
+</div>
+
+<!-- Frameworks -->
+
+<div class="skill-category">
+
+<h3>Frameworks</h3>
+
+<div id="frameworkContainer">
+
+<input
+type="text"
+name="skill_frameworks[]"
+class="skill-input"
+placeholder="React">
+
+</div>
+
+<button
+type="button"
+class="add-btn"
+id="addFramework">
+
++ Add Framework
+
+</button>
+
+</div>
+
+<!-- Databases -->
+
+<div class="skill-category">
+
+<h3>Databases</h3>
+
+<div id="databaseContainer">
+
+<input
+type="text"
+name="skill_databases[]"
+class="skill-input"
+placeholder="MongoDB">
+
+</div>
+
+<button
+type="button"
+class="add-btn"
+id="addDatabase">
+
++ Add Database
+
+</button>
+
+</div>
+
+<!-- Tools -->
+
+<div class="skill-category">
+
+<h3>Tools</h3>
+
+<div id="toolContainer">
+
+<input
+type="text"
+name="skill_tools[]"
+class="skill-input"
+placeholder="VS Code">
+
+</div>
+
+<button
+type="button"
+class="add-btn"
+id="addTool">
+
++ Add Tool
+
+</button>
+
+</div>
+
+<!-- Soft Skills -->
+
+<div class="skill-category">
+
+<h3>Soft Skills</h3>
+
+<div id="softSkillContainer">
+
+<input
+type="text"
+name="skill_soft[]"
+class="skill-input"
+placeholder="Leadership">
+
+</div>
+
+<button
+type="button"
+class="add-btn"
+id="addSoftSkill">
+
++ Add Soft Skill
+
+</button>
+
+</div>
+
+<!-- Other -->
+
+<div class="skill-category">
+
+<h3>Other Skills</h3>
+
+<div id="otherSkillContainer">
+
+<input
+type="text"
+name="skill_other[]"
+class="skill-input"
+placeholder="Problem Solving">
+
+</div>
+
+<button
+type="button"
+class="add-btn"
+id="addOtherSkill">
+
++ Add Skill
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- ===================================================== -->
+<!-- STEP 7 : CERTIFICATES -->
+<!-- ===================================================== -->
+
+<div class="form-step" style="display:none;">
+
+<div class="form-card">
+
+<h2>Certificates</h2>
+
+<p>Add all your certifications.</p>
+
+<div id="certificateContainer">
+
+<div class="certificate-item dynamic-card">
+
+<div class="form-grid">
+
+<div class="input-group">
+
+<label>Certificate Title</label>
+
+<input
+type="text"
+name="certificateTitle[]">
+
+</div>
+
+<div class="input-group">
+
+<label>Organization</label>
+
+<input
+type="text"
+name="certificateOrganization[]">
+
+</div>
+
+<div class="input-group">
+
+<label>Issue Date</label>
+
+<input
+type="date"
+name="certificateDate[]">
+
+</div>
+
+<div class="input-group">
+
+<label>Credential ID</label>
+
+<input
+type="text"
+name="credentialId[]">
+
+</div>
+
+<div class="input-group full-width">
+
+<label>Credential URL</label>
+
+<input
+type="url"
+name="credentialUrl[]">
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<button
+type="button"
+class="add-btn"
+id="addCertificate">
+
++ Add Certificate
+
+</button>
+
+</div>
+
+</div>
+
+<!-- ===================================================== -->
+<!-- STEP 8 : LANGUAGES -->
+<!-- ===================================================== -->
+
+<div class="form-step" style="display:none;">
+
+<div class="form-card">
+
+<h2>Languages</h2>
+
+<p>Languages you can communicate in.</p>
+
+<div id="languageContainer">
+
+<div class="language-item dynamic-card">
+
+<div class="form-grid">
+
+<div class="input-group">
+
+<label>Language</label>
+
+<input
+type="text"
+name="language[]">
+
+</div>
+
+<div class="input-group">
+
+<label>Proficiency</label>
+
+<select name="proficiency[]">
+
+<option>Beginner</option>
+
+<option>Intermediate</option>
+
+<option>Advanced</option>
+
+<option>Native</option>
+
+</select>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<button
+type="button"
+class="add-btn"
+id="addLanguage">
+
++ Add Language
+
+</button>
+
+</div>
+
+</div>
+
+<!-- ===================================================== -->
+<!-- STEP 9 : ADDITIONAL -->
+<!-- ===================================================== -->
+
+<div class="form-step" style="display:none;">
+
+<div class="form-card">
+
+<h2>Additional Information</h2>
+
+<p>Add achievements and extra information.</p>
+
+<div class="form-grid">
+
+<div class="input-group full-width">
+
+<label>Achievements</label>
+
+<textarea
+rows="4"
+name="achievements"></textarea>
+
+</div>
+
+<div class="input-group full-width">
+
+<label>Publications</label>
+
+<textarea
+rows="4"
+name="publications"></textarea>
+
+</div>
+
+<div class="input-group full-width">
+
+<label>Volunteer Experience</label>
+
+<textarea
+rows="4"
+name="volunteer"></textarea>
+
+</div>
+
+<div class="input-group">
+
+<label>Interests</label>
+
+<input
+type="text"
+name="interests">
+
+</div>
+
+<div class="input-group">
+
+<label>Hobbies</label>
+
+<input
+type="text"
+name="hobbies">
+
+</div>
+
+<div class="input-group full-width">
+
+<label>Extra Activities</label>
+
+<textarea
+rows="4"
+name="activities"></textarea>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- ===================================================== -->
+<!-- FOOTER -->
+<!-- ===================================================== -->
+
+<div class="builder-footer">
+
+<button
+type="button"
+class="previous-btn"
+id="prevBtn">
+
+← Previous
+
+</button>
+
+<button
+type="button"
+class="next-btn"
+id="nextBtn">
+
+Next →
+
+</button>
+
+<input
+    type="submit"
+    value="{% if edit_mode %}Update Resume →{% else %}Generate Resume →{% endif %}"
+    class="generate-btn"
+    id="generateBtn"
+    style="display:none;">
+
+</div>
+
+</form>
+
+</div>
+
+</div>
+
+
+<script>
+
+let currentStep = 0;
+
+const steps = document.querySelectorAll(".form-step");
+const stepItems = document.querySelectorAll(".step");
+
+const stepText = document.getElementById("stepText");
+
+const prevBtn = document.getElementById("prevBtn");
+const nextBtn = document.getElementById("nextBtn");
+const generateBtn = document.getElementById("generateBtn");
+
+/* ===========================================
+   TEMPLATE
+=========================================== */
+
+const selectedTemplate =
+    {% if edit_mode and resume %}
+        {{ resume.template|tojson }}
+    {% else %}
+        localStorage.getItem("selectedTemplate") || "professional"
+    {% endif %};
+
+document.getElementById("templateInput").value =
+selectedTemplate;
+
+/* ===========================================
+   UPDATE STEPPER
+=========================================== */
+
+function updateStepper(){
+
+steps.forEach((step,index)=>{
+
+step.style.display =
+index===currentStep
+?
+"block"
+:
+"none";
+
+});
+
+stepItems.forEach((item,index)=>{
+
+item.classList.remove("active");
+item.classList.remove("completed");
+
+if(index<currentStep){
+
+item.classList.add("completed");
+
+}
+
+if(index===currentStep){
+
+item.classList.add("active");
+
+}
+
+});
+
+stepText.innerHTML =
+`Step ${currentStep+1} of ${steps.length}`;
+
+progressFill.style.width =
+`${((currentStep+1)/steps.length)*100}%`;
+
+prevBtn.style.display =
+currentStep===0
+?
+"none"
+:
+"inline-flex";
+
+if(currentStep===steps.length-1){
+
+nextBtn.style.display="none";
+generateBtn.style.display="inline-flex";
+
+}
+else{
+
+nextBtn.style.display="inline-flex";
+generateBtn.style.display="none";
+
+}
+
+}
+
+/* ===========================================
+   NEXT
+=========================================== */
+
+nextBtn.onclick=()=>{
+
+if(currentStep<steps.length-1){
+
+currentStep++;
+
+updateStepper();
+
+window.scrollTo({
+
+top:0,
+behavior:"smooth"
+
+});
+
+}
+
+};
+
+/* ===========================================
+   PREVIOUS
+=========================================== */
+
+prevBtn.onclick=()=>{
+
+if(currentStep>0){
+
+currentStep--;
+
+updateStepper();
+
+window.scrollTo({
+
+top:0,
+behavior:"smooth"
+
+});
+
+}
+
+};
+
+updateStepper();
+
+/* ===========================================
+   ADD EDUCATION
+=========================================== */
+
+document.getElementById("addEducation").onclick=function(){
+
+const box=document.querySelector(".education-item");
+
+const clone=box.cloneNode(true);
+
+clone.querySelectorAll("input").forEach(input=>{
+
+input.value="";
+
+});
+
+document
+.getElementById("educationContainer")
+.appendChild(clone);
+
+};
+
+/* ===========================================
+   ADD EXPERIENCE
+=========================================== */
+
+document.getElementById("addExperience").onclick=function(){
+
+const box=document.querySelector(".experience-item");
+
+const clone=box.cloneNode(true);
+
+clone.querySelectorAll("input,textarea").forEach(el=>{
+
+el.value="";
+
+});
+
+clone.querySelector("select").selectedIndex=0;
+
+document
+.getElementById("experienceContainer")
+.appendChild(clone);
+
+};
+
+/* ===========================================
+   ADD PROJECT
+=========================================== */
+
+document.getElementById("addProject").onclick=function(){
+
+const box=document.querySelector(".project-item");
+
+const clone=box.cloneNode(true);
+
+clone.querySelectorAll("input,textarea").forEach(el=>{
+
+el.value="";
+
+});
+
+document
+.getElementById("projectContainer")
+.appendChild(clone);
+
+};
+
+
+
+/* ===========================================
+   ADD CERTIFICATE
+=========================================== */
+
+document.getElementById("addCertificate").onclick=function(){
+
+const box=document.querySelector(".certificate-item");
+
+const clone=box.cloneNode(true);
+
+clone.querySelectorAll("input").forEach(input=>{
+
+input.value="";
+
+});
+
+document
+.getElementById("certificateContainer")
+.appendChild(clone);
+
+};
+
+/* ===========================================
+   ADD LANGUAGE
+=========================================== */
+
+document.getElementById("addLanguage").onclick=function(){
+
+const box=document.querySelector(".language-item");
+
+const clone=box.cloneNode(true);
+
+clone.querySelector("input").value="";
+clone.querySelector("select").selectedIndex=0;
+
+document
+.getElementById("languageContainer")
+.appendChild(clone);
+
+};
+
+
+    /* ===========================================
+   ADD SKILL INPUT
+=========================================== */
+
+function addSkill(containerId,inputName,placeholder){
+
+const container=document.getElementById(containerId);
+
+const input=document.createElement("input");
+
+input.type="text";
+input.name=inputName;
+input.placeholder=placeholder;
+input.className="skill-input";
+
+container.appendChild(input);
+
+}
+
+document.getElementById("addLanguageSkill").onclick=function(){
+
+addSkill(
+"languageSkillContainer",
+"skill_languages[]",
+"Python"
+);
+
+};
+
+document.getElementById("addFramework").onclick=function(){
+
+addSkill(
+"frameworkContainer",
+"skill_frameworks[]",
+"React"
+);
+
+};
+
+document.getElementById("addDatabase").onclick=function(){
+
+addSkill(
+"databaseContainer",
+"skill_databases[]",
+"MySQL"
+);
+
+};
+
+document.getElementById("addTool").onclick=function(){
+
+addSkill(
+"toolContainer",
+"skill_tools[]",
+"VS Code"
+);
+
+};
+
+document.getElementById("addSoftSkill").onclick=function(){
+
+addSkill(
+"softSkillContainer",
+"skill_soft[]",
+"Leadership"
+);
+
+};
+
+document.getElementById("addOtherSkill").onclick=function(){
+
+addSkill(
+"otherSkillContainer",
+"skill_other[]",
+"Problem Solving"
+);
+
+/* ===========================================
+   SIMPLE VALIDATION
+=========================================== */
+
+};
+
+const form = document.getElementById("resumeForm");
+
+form.addEventListener("submit", function () {
+
+    document.getElementById("templateInput").value = selectedTemplate;
+
+});
+
+/* ===========================================
+   INITIALIZE
+=========================================== */
+
+/* =====================================================
+   EDIT RESUME - LOAD EXISTING DATA
+===================================================== */
+
+const editMode = {{ "true" if edit_mode else "false" }};
+
+{% if edit_mode and resume %}
+
+const existingResume = {{ resume | tojson }};
+
+
+/* =====================================================
+   HELPER
+===================================================== */
+
+function setFieldValue(name, value){
+
+    const field = document.querySelector(
+        `[name="${name}"]`
+    );
+
+    if(field){
+
+        field.value = value ?? "";
+
+    }
+
+}
+
+
+/* =====================================================
+   PERSONAL INFORMATION
+===================================================== */
+
+setFieldValue(
+    "resumeTitle",
+    existingResume.title
+);
+
+setFieldValue(
+    "fullName",
+    existingResume.personal?.fullName
+);
+
+setFieldValue(
+    "jobTitle",
+    existingResume.personal?.jobTitle
+);
+
+setFieldValue(
+    "email",
+    existingResume.personal?.email
+);
+
+setFieldValue(
+    "phone",
+    existingResume.personal?.phone
+);
+
+setFieldValue(
+    "location",
+    existingResume.personal?.location
+);
+
+setFieldValue(
+    "linkedin",
+    existingResume.personal?.linkedin
+);
+
+setFieldValue(
+    "github",
+    existingResume.personal?.github
+);
+
+setFieldValue(
+    "portfolio",
+    existingResume.personal?.portfolio
+);
+
+
+/* =====================================================
+   SUMMARY
+===================================================== */
+
+setFieldValue(
+    "summary",
+    existingResume.personal?.summary
+);
+
+
+/* =====================================================
+   TEMPLATE
+===================================================== */
+
+const existingTemplate =
+    existingResume.template || "professional";
+
+document.getElementById(
+    "templateInput"
+).value = existingTemplate;
+
+localStorage.setItem(
+    "selectedTemplate",
+    existingTemplate
+);
+
+
+/* =====================================================
+   EDUCATION
+===================================================== */
+
+function loadEducation(){
+
+    const data =
+        existingResume.education || [];
+
+    const container =
+        document.getElementById(
+            "educationContainer"
+        );
+
+    const firstItem =
+        container.querySelector(
+            ".education-item"
+        );
+
+    if(!firstItem){
+        return;
+    }
+
+
+    if(data.length === 0){
+        return;
+    }
+
+
+    container.innerHTML = "";
+
+
+    data.forEach(function(item){
+
+        const clone =
+            firstItem.cloneNode(true);
+
+
+        setCloneValue(
+            clone,
+            "degree[]",
+            item.degree
+        );
+
+        setCloneValue(
+            clone,
+            "institute[]",
+            item.institute
+        );
+
+        setCloneValue(
+            clone,
+            "university[]",
+            item.university
+        );
+
+        setCloneValue(
+            clone,
+            "startYear[]",
+            item.startYear
+        );
+
+        setCloneValue(
+            clone,
+            "endYear[]",
+            item.endYear
+        );
+
+        setCloneValue(
+            clone,
+            "cgpa[]",
+            item.cgpa
+        );
+
+
+        container.appendChild(clone);
+
+    });
+
+}
+
+
+/* =====================================================
+   EXPERIENCE
+===================================================== */
+
+function loadExperience(){
+
+    const data =
+        existingResume.experience || [];
+
+    const container =
+        document.getElementById(
+            "experienceContainer"
+        );
+
+    const firstItem =
+        container.querySelector(
+            ".experience-item"
+        );
+
+    if(!firstItem){
+        return;
+    }
+
+    if(data.length === 0){
+        return;
+    }
+
+
+    container.innerHTML = "";
+
+
+    data.forEach(function(item){
+
+        const clone =
+            firstItem.cloneNode(true);
+
+
+        setCloneValue(
+            clone,
+            "company[]",
+            item.company
+        );
+
+        setCloneValue(
+            clone,
+            "role[]",
+            item.role
+        );
+
+        setCloneValue(
+            clone,
+            "employmentType[]",
+            item.employmentType
+        );
+
+        setCloneValue(
+            clone,
+            "experienceLocation[]",
+            item.experienceLocation
+        );
+
+        setCloneValue(
+            clone,
+            "experienceStart[]",
+            item.experienceStart
+        );
+
+        setCloneValue(
+            clone,
+            "experienceEnd[]",
+            item.experienceEnd
+        );
+
+        setCloneValue(
+            clone,
+            "experienceDescription[]",
+            item.experienceDescription
+        );
+
+
+        container.appendChild(clone);
+
+    });
+
+}
+
+
+/* =====================================================
+   PROJECTS
+===================================================== */
+
+function loadProjects(){
+
+    const data =
+        existingResume.projects || [];
+
+    const container =
+        document.getElementById(
+            "projectContainer"
+        );
+
+    const firstItem =
+        container.querySelector(
+            ".project-item"
+        );
+
+    if(!firstItem){
+        return;
+    }
+
+    if(data.length === 0){
+        return;
+    }
+
+
+    container.innerHTML = "";
+
+
+    data.forEach(function(item){
+
+        const clone =
+            firstItem.cloneNode(true);
+
+
+        setCloneValue(
+            clone,
+            "projectTitle[]",
+            item.projectTitle
+        );
+
+        setCloneValue(
+            clone,
+            "projectRole[]",
+            item.projectRole
+        );
+
+        setCloneValue(
+            clone,
+            "technologies[]",
+            item.technologies
+        );
+
+        setCloneValue(
+            clone,
+            "duration[]",
+            item.duration
+        );
+
+        setCloneValue(
+            clone,
+            "teamSize[]",
+            item.teamSize
+        );
+
+        setCloneValue(
+            clone,
+            "projectType[]",
+            item.projectType
+        );
+
+        setCloneValue(
+            clone,
+            "projectGithub[]",
+            item.projectGithub
+        );
+
+        setCloneValue(
+            clone,
+            "projectLive[]",
+            item.projectLive
+        );
+
+        setCloneValue(
+            clone,
+            "projectDescription[]",
+            item.projectDescription
+        );
+
+
+        container.appendChild(clone);
+
+    });
+
+}
+
+
+/* =====================================================
+   CERTIFICATES
+===================================================== */
+
+function loadCertificates(){
+
+    const data =
+        existingResume.certificates || [];
+
+    const container =
+        document.getElementById(
+            "certificateContainer"
+        );
+
+    const firstItem =
+        container.querySelector(
+            ".certificate-item"
+        );
+
+    if(!firstItem){
+        return;
+    }
+
+    if(data.length === 0){
+        return;
+    }
+
+
+    container.innerHTML = "";
+
+
+    data.forEach(function(item){
+
+        const clone =
+            firstItem.cloneNode(true);
+
+
+        setCloneValue(
+            clone,
+            "certificateTitle[]",
+            item.certificateTitle
+        );
+
+        setCloneValue(
+            clone,
+            "certificateOrganization[]",
+            item.certificateOrganization
+        );
+
+        setCloneValue(
+            clone,
+            "certificateDate[]",
+            item.certificateDate
+        );
+
+        setCloneValue(
+            clone,
+            "credentialId[]",
+            item.credentialId
+        );
+
+        setCloneValue(
+            clone,
+            "credentialUrl[]",
+            item.credentialUrl
+        );
+
+
+        container.appendChild(clone);
+
+    });
+
+}
+
+
+/* =====================================================
+   LANGUAGES
+===================================================== */
+
+function loadLanguages(){
+
+    const data =
+        existingResume.languages || [];
+
+    const container =
+        document.getElementById(
+            "languageContainer"
+        );
+
+    const firstItem =
+        container.querySelector(
+            ".language-item"
+        );
+
+    if(!firstItem){
+        return;
+    }
+
+    if(data.length === 0){
+        return;
+    }
+
+
+    container.innerHTML = "";
+
+
+    data.forEach(function(item){
+
+        const clone =
+            firstItem.cloneNode(true);
+
+
+        setCloneValue(
+            clone,
+            "language[]",
+            item.language
+        );
+
+        setCloneValue(
+            clone,
+            "proficiency[]",
+            item.proficiency
+        );
+
+
+        container.appendChild(clone);
+
+    });
+
+}
+
+
+/* =====================================================
+   SKILLS
+===================================================== */
+
+function loadSkills(){
+
+    const skills =
+        existingResume.skills || {};
+
+
+    loadSkillCategory(
+        "languageSkillContainer",
+        "skill_languages[]",
+        skills.language || []
+    );
+
+
+    loadSkillCategory(
+        "frameworkContainer",
+        "skill_frameworks[]",
+        skills.framework || []
+    );
+
+
+    loadSkillCategory(
+        "databaseContainer",
+        "skill_databases[]",
+        skills.database || []
+    );
+
+
+    loadSkillCategory(
+        "toolContainer",
+        "skill_tools[]",
+        skills.tool || []
+    );
+
+
+    loadSkillCategory(
+        "softSkillContainer",
+        "skill_soft[]",
+        skills.soft || []
+    );
+
+
+    loadSkillCategory(
+        "otherSkillContainer",
+        "skill_other[]",
+        skills.other || []
+    );
+
+}
+
+
+/* =====================================================
+   ADDITIONAL
+===================================================== */
+
+setFieldValue(
+    "achievements",
+    existingResume.additional?.achievements
+);
+
+setFieldValue(
+    "publications",
+    existingResume.additional?.publications
+);
+
+setFieldValue(
+    "volunteer",
+    existingResume.additional?.volunteer
+);
+
+setFieldValue(
+    "interests",
+    existingResume.additional?.interests
+);
+
+setFieldValue(
+    "hobbies",
+    existingResume.additional?.hobbies
+);
+
+setFieldValue(
+    "activities",
+    existingResume.additional?.activities
+);
+
+
+/* =====================================================
+   RUN ALL LOADERS
+===================================================== */
+
+loadEducation();
+
+loadExperience();
+
+loadProjects();
+
+loadSkills();
+
+loadCertificates();
+
+loadLanguages();
+
+{% endif %}
+
+
+
+
+window.onload=function(){
+
+updateStepper();
+
+};
+
+</script>
+
+</body>
+
+</html>

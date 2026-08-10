@@ -1,0 +1,276 @@
+.features-section{
+
+    width:90%;
+    max-width:1400px;
+
+    margin:140px auto;
+
+    position:relative;
+
+}
+
+
+
+/* Heading */
+
+
+.features-heading{
+
+    text-align:center;
+
+    margin-bottom:80px;
+
+}
+
+
+.features-heading span{
+
+    color:#2563eb;
+
+    font-size:14px;
+
+    font-weight:700;
+
+    letter-spacing:3px;
+
+}
+
+
+
+.features-heading h2{
+
+    margin-top:20px;
+
+    font-size:52px;
+
+    line-height:1.2;
+
+    font-weight:800;
+
+    color:#0f172a;
+
+}
+
+
+
+.features-heading p{
+
+    max-width:700px;
+
+    margin:25px auto;
+
+    color:#64748b;
+
+    font-size:18px;
+
+    line-height:1.8;
+
+}
+
+
+
+
+
+/* Cards Grid */
+
+
+.features-container{
+
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:32px;
+
+
+}
+
+
+
+
+/* Card */
+
+
+.feature-box{
+
+
+    padding:38px;
+
+
+    min-height:280px;
+
+
+    border-radius:28px;
+
+
+    background:#ffffff;
+
+
+    border:1px solid #dbeafe;
+
+
+    box-shadow:
+
+    0 20px 45px rgba(37,99,235,.08);
+
+
+    transition:all .35s ease;
+
+
+}
+
+
+
+.feature-box:hover{
+
+
+    transform:translateY(-12px);
+
+
+    border-color:#2563eb;
+
+
+    box-shadow:
+
+    0 25px 60px rgba(37,99,235,.18);
+
+
+}
+
+
+
+
+
+/* Icon */
+
+
+.feature-icon{
+
+
+    width:70px;
+
+    height:70px;
+
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+
+    border-radius:20px;
+
+
+    background:#eff6ff;
+
+
+    color:#2563eb;
+
+
+    margin-bottom:28px;
+
+
+}
+
+
+
+.feature-icon svg{
+
+    width:34px;
+
+    height:34px;
+
+}
+
+
+
+
+/* Text */
+
+
+.feature-box h3{
+
+
+    color:#0f172a;
+
+
+    font-size:23px;
+
+
+    margin-bottom:15px;
+
+
+}
+
+
+
+.feature-box p{
+
+
+    color:#64748b;
+
+
+    line-height:1.7;
+
+
+    font-size:15px;
+
+
+}
+
+
+
+
+
+/* Responsive */
+
+
+@media(max-width:1100px){
+
+
+.features-container{
+
+grid-template-columns:repeat(2,1fr);
+
+}
+
+
+.features-heading h2{
+
+font-size:42px;
+
+}
+
+
+}
+
+
+
+
+@media(max-width:700px){
+
+
+.features-container{
+
+grid-template-columns:1fr;
+
+}
+
+
+.features-heading h2{
+
+font-size:32px;
+
+}
+
+
+.feature-box{
+
+padding:30px;
+
+}
+
+
+}

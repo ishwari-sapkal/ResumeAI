@@ -1,0 +1,455 @@
+/* ===================================================
+   HOME PAGE TEMPLATE SECTION
+=================================================== */
+
+/* ===================================================
+   PREMIUM TEMPLATE SECTION
+=================================================== */
+
+.templates-section{
+
+padding:40px 8% 70px;
+
+background:
+linear-gradient(
+180deg,
+#ffffff 0%,
+#f8fbff 100%
+);
+
+position:relative;
+
+overflow:hidden;
+
+}
+
+/* Decorative Blurs */
+
+.templates-section::before{
+
+content:"";
+
+position:absolute;
+
+top:-120px;
+
+left:-120px;
+
+width:260px;
+
+height:260px;
+
+background:#dbeafe;
+
+border-radius:50%;
+
+filter:blur(80px);
+
+opacity:.7;
+
+}
+
+.templates-section::after{
+
+content:"";
+
+position:absolute;
+
+right:-120px;
+
+bottom:-120px;
+
+width:280px;
+
+height:280px;
+
+background:#bfdbfe;
+
+border-radius:50%;
+
+filter:blur(90px);
+
+opacity:.6;
+
+}
+
+/* ===================================================
+   GRID
+=================================================== */
+
+.template-grid{
+
+display:grid;
+
+grid-template-columns:repeat(3,1fr);
+
+gap:40px;
+
+margin-top:55px;
+
+position:relative;
+
+z-index:2;
+
+}
+
+/* ===================================================
+   PREMIUM TEMPLATE CARD
+=================================================== */
+
+.templates-section .template-card{
+
+background:#ffffff;
+
+border-radius:30px;
+
+overflow:hidden;
+
+border:1px solid #e7eef8;
+
+box-shadow:
+0 15px 40px rgba(15,23,42,.06);
+
+transition:.45s ease;
+
+position:relative;
+
+}
+
+.templates-section .template-card:hover{
+box-shadow:
+0 35px 70px rgba(37,99,235,.18);
+
+border-color:#93c5fd;
+
+}
+
+/* ===================================================
+   PREVIEW AREA
+=================================================== */
+
+.templates-section .template-preview{
+
+height:340px;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+padding:28px;
+
+position:relative;
+
+overflow:hidden;
+
+}
+
+/* Floating Background Circle */
+
+.templates-section .template-preview::before{
+
+content:"";
+
+position:absolute;
+
+width:180px;
+
+height:180px;
+
+background:rgba(255,255,255,.35);
+
+border-radius:50%;
+
+top:-60px;
+
+right:-40px;
+
+}
+
+/* ===================================================
+   RESUME PAPER
+=================================================== */
+
+.paper{
+
+width:200px;
+
+height:275px;
+
+background:#ffffff;
+
+border-radius:14px;
+
+padding:18px;
+
+box-shadow:
+0 18px 40px rgba(15,23,42,.12);
+
+transform:rotate(-2deg);
+
+transition:.45s;
+
+position:relative;
+
+z-index:2;
+
+}
+
+.template-card:hover .paper{
+
+transform:
+rotate(0deg)
+scale(1.04);
+
+}
+
+/* ===================================================
+   HEADER
+=================================================== */
+
+.paper-head{
+
+width:100%;
+
+height:16px;
+
+border-radius:30px;
+
+background:linear-gradient(
+90deg,
+#2563eb,
+#60a5fa
+);
+
+margin-bottom:16px;
+
+}
+
+/* ===================================================
+   PROFILE BLOCK
+=================================================== */
+
+.paper-box{
+
+height:70px;
+
+border-radius:12px;
+
+background:#dbeafe;
+
+margin:18px 0;
+
+}
+
+/* ===================================================
+   TEXT LINES
+=================================================== */
+
+.paper-line{
+
+width:100%;
+
+height:8px;
+
+border-radius:50px;
+
+background:#cbd5e1;
+
+margin-bottom:12px;
+
+}
+
+.paper-line.short{
+
+width:65%;
+
+}
+
+
+/* ===================================================
+   PROFESSIONAL TEMPLATE
+=================================================== */
+
+.template-card:nth-child(1) .paper{
+
+border-top:10px solid #2563eb;
+
+}
+
+.template-card:nth-child(1) .paper-box{
+
+background:#dbeafe;
+
+}
+
+.template-card:nth-child(1) .paper-head{
+
+background:linear-gradient(
+90deg,
+#1d4ed8,
+#3b82f6
+);
+
+}
+
+/* ===================================================
+   CREATIVE TEMPLATE
+=================================================== */
+
+.template-card:nth-child(2) .paper{
+
+border-left:14px solid #8b5cf6;
+
+padding-left:24px;
+
+}
+
+.template-card:nth-child(2) .paper-head{
+
+background:linear-gradient(
+90deg,
+#7c3aed,
+#c084fc
+);
+
+}
+
+.template-card:nth-child(2) .paper-box{
+
+background:#ede9fe;
+
+border-radius:18px;
+
+}
+
+/* Creative Decorative Circle */
+
+.template-card:nth-child(2) .paper::before{
+
+content:"";
+
+position:absolute;
+
+top:18px;
+
+right:18px;
+
+width:34px;
+
+height:34px;
+
+background:#8b5cf6;
+
+border-radius:50%;
+
+}
+
+/* ===================================================
+   MODERN TEMPLATE
+=================================================== */
+
+.template-card:nth-child(3) .paper{
+
+border-bottom:10px solid #10b981;
+
+}
+
+.template-card:nth-child(3) .paper-head{
+
+background:linear-gradient(
+90deg,
+#059669,
+#34d399
+);
+
+}
+
+.template-card:nth-child(3) .paper-box{
+
+background:#d1fae5;
+
+}
+
+/* ===================================================
+   CONTENT
+=================================================== */
+
+.template-content{
+
+padding:30px;
+
+text-align:center;
+
+background:#ffffff;
+
+}
+
+.template-content h3{
+
+font-size:26px;
+
+font-weight:800;
+
+color:#0f172a;
+
+margin-bottom:12px;
+
+}
+
+.template-content p{
+
+font-size:15px;
+
+line-height:1.8;
+
+color:#64748b;
+
+margin-bottom:26px;
+
+min-height:55px;
+
+}
+
+/* ===================================================
+   BUTTON
+=================================================== */
+
+.template-content button{
+
+width:100%;
+
+height:52px;
+
+border:none;
+
+border-radius:16px;
+
+background:linear-gradient(
+135deg,
+#2563eb,
+#3b82f6
+);
+
+color:#ffffff;
+
+font-size:15px;
+
+font-weight:700;
+
+cursor:pointer;
+
+transition:.35s;
+
+}
+
+.template-content button:hover{
+
+transform:translateY(-3px);
+
+box-shadow:
+0 18px 35px rgba(37,99,235,.25);
+
+}
+
