@@ -201,3 +201,12 @@ The application maintains user-specific information and connects it with their r
         ┌───────────────┐
         │  PDF Download │
         └───────────────┘
+
+
+## 🔗 Project Links
+
+🌐 **Live Demo:** [ResumeAI – Live Application] https://resume-hvpwdcq3g-ishwari-projects.vercel.app/
+
+💻 **GitHub Repository:** [ResumeAI on GitHub]https://github.com/ishwari-sapkal/ResumeAI
+
+👩‍💻 **LinkedIn:** [Ishwari Sapkal]https://www.linkedin.com/in/ishwari-sapkall
